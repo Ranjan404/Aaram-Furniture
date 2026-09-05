@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens - light, warm, editorial. The "futuristic" quality comes from
+   layout, type scale, spacing and motion rather than from colour.
+   --------------------------------------------------------------------------- */
+@theme {
+  /* Surfaces */
+  --color-ivory: #fbf9f6;
+  --color-cream: #f5f1ea;
+  --color-sand: #ece4d8;
+  --color-line: #e4ddd1;
+  --color-line-strong: #d2c8b8;
+
+  /* Ink */
+  --color-ink: #17140f;
+  --color-graphite: #443d34;
+  /* Both stone tones are tuned to clear WCAG AA (4.5:1) against the ivory and
+     cream surfaces they are used on, at normal text sizes. */
+  --color-stone: #6f675a;
+  --color-stone-light: #746c5e;
+
+  /* Accents */
+  --color-brass: #a67c4b;
+  --color-brass-deep: #86603a;
+  --color-brass-soft: #e7d8c2;
+  /* Deep enough for white button labels to clear AA (5.02:1). */
+  --color-whatsapp: #15803c;
+  --color-whatsapp-deep: #10662f;
+
+  /* Type */
+  --font-display: var(--font-instrument-serif), ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Radii */
+  --radius-card: 1.25rem;
+  --radius-media: 1.5rem;
+
+  /* Shadows - soft and warm, never grey/hard */
+  --shadow-soft: 0 1px 2px rgba(23, 20, 15, 0.04), 0 8px 24px -12px rgba(23, 20, 15, 0.12);
+  --shadow-lift: 0 2px 4px rgba(23, 20, 15, 0.05), 0 24px 48px -20px rgba(23, 20, 15, 0.22);
+
+  /* Motion */
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Fluid display scale. Four distinct steps so the hero, section headings and
+     card titles read as a hierarchy rather than three sizes of the same thing. */
+  --text-display-xs: clamp(1.375rem, 1.15rem + 0.95vw, 1.75rem);
+  --text-display-sm: clamp(1.625rem, 1.25rem + 1.7vw, 2.375rem);
+  --text-display-md: clamp(2rem, 1.45rem + 2.6vw, 3.25rem);
+  --text-display-lg: clamp(2.5rem, 1.35rem + 4.9vw, 4.5rem);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+
+   Everything below sits in `@layer base` so that Tailwind utilities always win.
+   Unlayered CSS outranks layered CSS in the cascade, so an unlayered `h1 {}`
+   rule would silently beat `class="text-white"` on a heading.
+   --------------------------------------------------------------------------- */
+@layer base {
+
+:root {
+  /* The site is intentionally light-only; lock in the form control palette so
+     a visitor's OS dark mode cannot invert inputs and selects. */
+  color-scheme: light;
+  --header-h: 4.5rem;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 5.25rem;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Stop anchored sections from hiding behind the sticky header. */
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-graphite);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Belt and braces against accidental horizontal scroll on small screens. */
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+/* Display sizes carry the tight optical leading; smaller headings need air, so
+   card and accordion titles are not squeezed by the hero's settings. */
+h1,
+h2 {
+  letter-spacing: -0.018em;
+  line-height: 1.06;
+}
+
+h3,
+h4 {
+  letter-spacing: -0.008em;
+  line-height: 1.22;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background-color: var(--color-sand);
+  color: var(--color-ink);
+}
+
+/* Visible, consistent focus for keyboard users on every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities
+   --------------------------------------------------------------------------- */
+/* Small uppercase label above a heading. Colour is set at the call site so it
+   never competes with a `text-*` utility. */
+@utility eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* Fine hairline rule that reads as a drawn line rather than a border. */
+@utility hairline {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    var(--color-line-strong) 12%,
+    var(--color-line-strong) 88%,
+    transparent
+  );
+  height: 1px;
+}
+
+/* Hides the scrollbar on the mobile testimonial rail. The rail stays fully
+   keyboard and touch scrollable; only the bar itself is hidden. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Warm ivory-to-cream wash used behind full-bleed sections. */
+@utility surface-wash {
+  background-image: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-cream) 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll reveal. Elements start slightly offset and settle into place once
+   they enter the viewport (see components/ui/Reveal.tsx). If JavaScript never
+   runs, `.reveal` without `.is-visible` must still be readable, so the styles
+   are applied only when the observer marks the element as ready.
+   --------------------------------------------------------------------------- */
+.reveal[data-ready="true"] {
+  opacity: 0;
+  transform: translate3d(0, 1.25rem, 0);
+  transition:
+    opacity 0.7s var(--ease-premium),
+    transform 0.7s var(--ease-premium);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal[data-ready="true"].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.5rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hero entrance: runs immediately, no observer needed above the fold. */
+.animate-rise {
+  animation: rise 0.9s var(--ease-premium) both;
+}
+
+.animate-fade {
+  animation: fade 1.2s var(--ease-premium) both;
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion: remove every transform/animation based effect but keep all
+   content fully visible.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal[data-ready="true"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
