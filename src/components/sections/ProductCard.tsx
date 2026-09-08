@@ -15,12 +15,12 @@ import { ArrowUpRightIcon, WhatsAppIcon } from "@/components/ui/Icons";
  */
 export function ProductCard({
   product,
-  priority = false,
+  preload = false,
   sizes = "(max-width: 639px) 92vw, (max-width: 1023px) 46vw, (max-width: 1279px) 31vw, 23vw",
   className,
 }: {
   product: Product;
-  priority?: boolean;
+  preload?: boolean;
   sizes?: string;
   className?: string;
 }) {
@@ -34,7 +34,7 @@ export function ProductCard({
       )}
     >
       <div className="relative">
-        <SmartImage image={product.image} ratio="product" sizes={sizes} priority={priority} />
+        <SmartImage image={product.image} ratio="product" sizes={sizes} preload={preload} />
         {product.badge ? (
           <span className="absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1 text-[0.6875rem] font-semibold tracking-wide text-ink uppercase backdrop-blur-sm">
             {product.badge}

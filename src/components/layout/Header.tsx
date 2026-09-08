@@ -20,8 +20,10 @@ import {
 const navLinks = [
   { href: "/sofas", label: "Sofas" },
   { href: "/beds", label: "Beds" },
+  { href: "/custom-furniture", label: "Custom" },
   { href: "/furniture", label: "Furniture" },
   { href: "/collection", label: "Collection" },
+  { href: "/blog", label: "Guides" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -104,7 +106,10 @@ export function Header() {
                       href={link.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300",
+                        /* Eight items have to fit at exactly 1024px, so the
+                           horizontal padding starts tight and only opens up
+                           from xl, where the phone number also appears. */
+                        "relative rounded-full px-2.5 py-2 text-sm font-medium whitespace-nowrap transition-colors duration-300 xl:px-4",
                         solid
                           ? "text-graphite hover:text-ink"
                           : "text-white/80 hover:text-white",
@@ -115,7 +120,7 @@ export function Header() {
                       <span
                         aria-hidden="true"
                         className={cn(
-                          "absolute inset-x-4 -bottom-0.5 h-px origin-left scale-x-0 transition-transform duration-300 ease-[var(--ease-premium)]",
+                          "absolute inset-x-2.5 -bottom-0.5 h-px origin-left scale-x-0 transition-transform duration-300 ease-[var(--ease-premium)] xl:inset-x-4",
                           solid ? "bg-ink" : "bg-white",
                           active && "scale-x-100",
                         )}

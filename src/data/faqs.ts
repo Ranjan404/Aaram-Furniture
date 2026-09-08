@@ -2,8 +2,11 @@ import type { FaqItem } from "@/lib/types";
 
 /**
  * FAQ content. Kept to questions that can be answered from how the business
- * already works - no delivery timelines, warranty terms, pricing or coverage
- * areas are stated, because those were not supplied.
+ * already works - no warranty terms, pricing or delivery charges are stated,
+ * because those were not supplied. The build time is the exception: it is
+ * confirmed, lives in `siteConfig.leadTime`, and is answered on
+ * `/custom-furniture` rather than here, so the two pages do not publish
+ * overlapping `FAQPage` content.
  * TODO(owner): review each answer and add specifics where you can commit to them.
  */
 export const faqs: FaqItem[] = [
@@ -38,3 +41,15 @@ export const faqs: FaqItem[] = [
       "Prices depend on size, upholstery and finish, so they are quoted per piece. Call or message us with the design you like and the size you need for an exact quote.",
   },
 ];
+
+/**
+ * The three questions the homepage shows. The full set lives on `/contact`,
+ * which is where the accordion belongs: the homepage was carrying fourteen
+ * sections and this was the cheapest one to shorten.
+ *
+ * `FAQPage` structured data is emitted from whatever a page renders, so the
+ * homepage emits these three and `/contact` emits all five. Keep it that way.
+ */
+export const homeFaqs: FaqItem[] = faqs.filter((faq) =>
+  ["q1", "q2", "q5"].includes(faq.id),
+);

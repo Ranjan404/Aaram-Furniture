@@ -3,6 +3,7 @@ import { sofas } from "@/data/products";
 import { galleryItems } from "@/data/gallery";
 import { waMessages, whatsappHref, telHref } from "@/lib/contact";
 import { breadcrumbJsonLd, buildMetadata, productListJsonLd } from "@/lib/seo";
+import { shareCard } from "@/data/share-cards";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { PhoneIcon, WhatsAppIcon } from "@/components/ui/Icons";
@@ -12,6 +13,7 @@ import { LifestyleGallery } from "@/components/sections/LifestyleGallery";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { CatalogueCTA } from "@/components/sections/CatalogueCTA";
 import { LeadCTA } from "@/components/sections/LeadCTA";
+import { GuidesTeaser } from "@/components/sections/GuidesTeaser";
 
 const description =
   "Modern sofa designs made to order: three-seaters, L-shaped sectionals, modular sofas and loveseats in the fabric, leather and size you choose. Call or WhatsApp for designs and a quote.";
@@ -20,6 +22,7 @@ export const metadata: Metadata = buildMetadata({
   title: "Sofa Designs - Modern, L-Shape & Custom Sofas",
   description,
   path: "/sofas",
+  image: shareCard("sofas"),
 });
 
 const breadcrumb = [
@@ -64,7 +67,7 @@ export default function SofasPage() {
         products={sofas}
         filterable
         filterLabel="sofa"
-        prioritiseFirst
+        preloadFirst
         tone="ivory"
       />
 
@@ -76,6 +79,14 @@ export default function SofasPage() {
         title="Sofas in real rooms."
         lead="How the same shapes read in different spaces, materials and light."
         tone="cream"
+      />
+
+      <GuidesTeaser
+        tags={["sofas", "measuring", "upholstery"]}
+        title="Read this before you order a sofa."
+        lead="Sizing, seat depth, frames and upholstery, explained the way we would explain it in person."
+        tone="ivory"
+        ctaLabel="All sofa guides"
       />
 
       <WhyChooseUs />

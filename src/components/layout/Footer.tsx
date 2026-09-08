@@ -17,8 +17,10 @@ const explore = [
   { href: "/", label: "Home" },
   { href: "/sofas", label: "Sofas" },
   { href: "/beds", label: "Beds" },
+  { href: "/custom-furniture", label: "Custom furniture" },
   { href: "/furniture", label: "All furniture" },
   { href: "/collection", label: "Collection" },
+  { href: "/blog", label: "Furniture guides" },
   { href: "/about", label: "About us" },
   { href: "/contact", label: "Contact" },
 ];

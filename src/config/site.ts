@@ -37,18 +37,30 @@ export interface OpeningHours {
 export const siteConfig = {
   // -- Brand -----------------------------------------------------------------
   // TODO(owner): replace with the registered business name.
-  name: "Aaram Furniture",
-  shortName: "Aaram",
+  name: "Furniture Future",
+  shortName: "Future",
   tagline: "Sofas and beds, crafted for the way you live",
 
-  // TODO(owner): replace with the live domain before launch. Used for canonical
-  // URLs, sitemap, Open Graph images and structured data.
-  url: "https://www.aaramfurniture.com",
+  /**
+   * The live domain. Canonical URLs, the sitemap, Open Graph images and the
+   * structured data are all built from it.
+   *
+   * Confirmed by the owner as the `www` form. That choice has to be enforced at
+   * the hosting layer as well: non-`www` and plain `http` must 301 here, not
+   * answer with a 200 of their own, or the site's link equity is split across
+   * hostnames. Check with `curl -I` after deploying.
+   */
+  url: "https://www.furniturefuture.com",
 
+  /**
+   * Meta description for the homepage, and the `description` on the
+   * `FurnitureStore` and `WebSite` structured data. It names the market because
+   * `serviceArea` below is owner-confirmed, and it is kept near 155 characters
+   * so Google does not truncate it in a result.
+   */
   description:
-    "Premium sofas, beds and custom furniture made to order. Explore modern " +
-    "sofa designs, upholstered and storage beds, dining sets, wardrobes and " +
-    "TV units, then talk to us directly on WhatsApp or call for a quote.",
+    "Premium sofas, beds and custom furniture made to order for homes across " +
+    "Delhi NCR. Browse the designs, then call or WhatsApp for sizes and a quote.",
 
   // -- Contact ---------------------------------------------------------------
   phone: {
@@ -71,9 +83,40 @@ export const siteConfig = {
   // TODO(owner): fill this in to display business hours.
   openingHours: null as OpeningHours[] | null,
 
-  // TODO(owner): e.g. "Delhi NCR". Shown in the contact section and used in the
-  // structured data `areaServed` field. Left empty until confirmed.
-  serviceArea: null as string | null,
+  /**
+   * How long a made-to-order piece takes to build, once the design is
+   * confirmed. Confirmed by the owner as a four-to-seven-day range.
+   *
+   * It is a range on purpose: it is the only delivery figure the site states,
+   * and a single number would be a promise the business has not made. Rendered
+   * on `/custom-furniture` and on every product page.
+   * TODO(owner): if the range differs by piece - a wardrobe against a
+   * two-seater, say - tell us and it can be stated per category instead.
+   */
+  leadTime: "4 to 7 days" as string | null,
+
+  // The phrase shown to visitors in the contact section and the footer.
+  // Confirmed by the owner: the business sells into the Delhi NCR market.
+  serviceArea: "Delhi NCR" as string | null,
+
+  /**
+   * The individual places behind that phrase, used for the `areaServed` field
+   * in the LocalBusiness structured data so Google is given the actual towns
+   * rather than only the umbrella term. It is also the list that
+   * `src/data/service-areas.ts` is checked against, so the rendered
+   * "Where we deliver" section can never show a place this list does not claim.
+   * TODO(owner): trim or extend it to match where you genuinely deliver. Every
+   * entry here is a claim that you serve that place.
+   */
+  serviceAreas: [
+    "Delhi",
+    "New Delhi",
+    "Gurugram",
+    "Noida",
+    "Greater Noida",
+    "Ghaziabad",
+    "Faridabad",
+  ] as string[] | null,
 
   // -- Social (optional) -----------------------------------------------------
   social: {
@@ -95,7 +138,7 @@ export const siteConfig = {
      */
     available: false,
     path: "/catalogue/product-catalogue.pdf",
-    downloadName: "Aaram-Furniture-Catalogue.pdf",
+    downloadName: "Furniture-Future-Catalogue.pdf",
     /** Shown next to the button. Keep it short. */
     note: "Sofas, beds, dining and storage designs in one PDF.",
   },

@@ -3,6 +3,7 @@ import { galleryItems } from "@/data/gallery";
 import { featuredBeds, featuredSofas } from "@/data/products";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
 import { breadcrumbJsonLd, buildMetadata, productListJsonLd } from "@/lib/seo";
+import { shareCard } from "@/data/share-cards";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { ArrowRightIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/Icons";
@@ -19,6 +20,7 @@ export const metadata: Metadata = buildMetadata({
   title: "Collection - Furniture Gallery & Room Inspiration",
   description,
   path: "/collection",
+  image: shareCard("collection"),
 });
 
 const breadcrumb = [

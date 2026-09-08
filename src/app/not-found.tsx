@@ -1,8 +1,30 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { buildMetadata } from "@/lib/seo";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { PhoneIcon, WhatsAppIcon } from "@/components/ui/Icons";
+
+/**
+ * Without this, the root layout's metadata applies unchanged and every dead URL
+ * advertises itself on social platforms as the homepage - same title, same
+ * description, same `og:url` - while shipping both Next's own `noindex` for the
+ * 404 route and the layout's `index, follow`.
+ */
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: "Page not found",
+    description:
+      "This page has been moved or does not exist. Browse the sofa and bed designs, or call or message us and we will point you to the right one.",
+    path: "/404",
+    noIndex: true,
+  }),
+  /* No canonical: this component renders under whatever URL was mistyped, so
+     any single canonical it declared would be a claim about a page that is not
+     the one being served. */
+  alternates: {},
+};
 
 const suggestions = [
   { href: "/sofas", label: "Sofa designs" },

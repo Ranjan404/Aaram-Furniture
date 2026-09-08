@@ -400,9 +400,26 @@ const moreEntries: ProductInput[] = [
   },
 ];
 
-/** Attaches a URL slug to every entry so links stay in sync with the names. */
+/**
+ * Attaches a URL slug to every entry so links stay in sync with the names, and
+ * with it the 1200x630 social share card, whose filename is the same slug.
+ *
+ * The alt text is the photograph's own: the card is a crop of that same
+ * picture, so nothing new is being asserted about it.
+ *
+ * The cards are produced by `scripts/generate-share-images.mjs`. Rename or add
+ * a product and the slug changes, so re-run that script (`npm run
+ * share-images`) or the card will 404.
+ */
 const withSlug = (entries: ProductInput[]): Product[] =>
-  entries.map((entry) => ({ ...entry, slug: slugify(entry.name) }));
+  entries.map((entry) => {
+    const slug = slugify(entry.name);
+    return {
+      ...entry,
+      slug,
+      shareImage: { src: `/images/share/products/${slug}.jpg`, alt: entry.image.alt },
+    };
+  });
 
 export const sofas = withSlug(sofaEntries);
 export const beds = withSlug(bedEntries);

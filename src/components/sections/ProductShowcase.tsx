@@ -19,7 +19,7 @@ export function ProductShowcase({
   tone = "ivory",
   columns = 4,
   headingId,
-  prioritiseFirst = false,
+  preloadFirst = false,
   filterable = false,
   filterLabel = "furniture",
 }: {
@@ -32,8 +32,8 @@ export function ProductShowcase({
   tone?: "ivory" | "cream" | "wash";
   columns?: 3 | 4;
   headingId: string;
-  /** Marks the first image as high priority - only for above-the-fold grids. */
-  prioritiseFirst?: boolean;
+  /** Preloads the first image - only for an above-the-fold grid. */
+  preloadFirst?: boolean;
   /** Adds client-side category chips above the grid. */
   filterable?: boolean;
   filterLabel?: string;
@@ -66,7 +66,7 @@ export function ProductShowcase({
               <ProductCard
                 product={product}
                 sizes={sizes}
-                priority={prioritiseFirst && index === 0}
+                preload={preloadFirst && index === 0}
               />
             </Reveal>
           ))}

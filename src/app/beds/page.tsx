@@ -3,6 +3,7 @@ import { beds } from "@/data/products";
 import { galleryItems } from "@/data/gallery";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
 import { breadcrumbJsonLd, buildMetadata, productListJsonLd } from "@/lib/seo";
+import { shareCard } from "@/data/share-cards";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { PhoneIcon, WhatsAppIcon } from "@/components/ui/Icons";
@@ -12,6 +13,7 @@ import { LifestyleGallery } from "@/components/sections/LifestyleGallery";
 import { CatalogueCTA } from "@/components/sections/CatalogueCTA";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { LeadCTA } from "@/components/sections/LeadCTA";
+import { GuidesTeaser } from "@/components/sections/GuidesTeaser";
 
 const description =
   "Modern bed designs made to order: upholstered beds, hydraulic storage beds and solid wood platform beds in king, queen and custom sizes. Call or WhatsApp for designs and a quote.";
@@ -20,6 +22,7 @@ export const metadata: Metadata = buildMetadata({
   title: "Bed Designs - Upholstered, Storage & Platform Beds",
   description,
   path: "/beds",
+  image: shareCard("beds"),
 });
 
 const breadcrumb = [
@@ -62,7 +65,7 @@ export default function BedsPage() {
         products={beds}
         filterable
         filterLabel="bed"
-        prioritiseFirst
+        preloadFirst
         tone="ivory"
       />
 
@@ -74,6 +77,15 @@ export default function BedsPage() {
         title="Bedrooms we would happily sleep in."
         lead="Headboard height, bedside proportions and the space you leave to walk around all change how a bedroom feels."
         tone="cream"
+      />
+
+      <GuidesTeaser
+        tags={["beds", "bedroom", "storage"]}
+        eyebrow="Bedroom guides"
+        title="Sizes, storage and headboard heights."
+        lead="Indian bed sizes, the difference between hydraulic and drawer storage, and how much room to leave around the bed."
+        tone="ivory"
+        ctaLabel="All bedroom guides"
       />
 
       <WhyChooseUs />

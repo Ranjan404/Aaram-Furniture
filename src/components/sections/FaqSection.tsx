@@ -1,22 +1,48 @@
+import type { ReactNode } from "react";
 import { faqs } from "@/data/faqs";
+import type { FaqItem } from "@/lib/types";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 
 /**
  * FAQ built on native <details> elements: keyboard accessible, works without
  * JavaScript, and adds no client bundle.
+ *
+ * `items` exists so a page can render the question set that belongs to it -
+ * `/custom-furniture` asks different things from `/contact`. Whatever is passed
+ * here is also what the page should hand to `faqJsonLd()`: `FAQPage` structured
+ * data must never contain a question the page does not show.
  */
-export function FaqSection() {
+export function FaqSection({
+  items = faqs,
+  eyebrow = "Good to know",
+  title = "Questions we get asked most.",
+  lead,
+  tone = "ivory",
+  action,
+}: {
+  items?: FaqItem[];
+  eyebrow?: string;
+  title?: string;
+  lead?: string;
+  tone?: "ivory" | "cream" | "wash";
+  /** Onward link, e.g. from the homepage excerpt to the full list. */
+  action?: ReactNode;
+}) {
+  if (!items.length) return null;
+
   return (
-    <Section id="faq" tone="ivory" labelledBy="faq-title" containerSize="default">
+    <Section id="faq" tone={tone} labelledBy="faq-title" containerSize="default">
       <SectionHeading
         id="faq-title"
-        eyebrow="Good to know"
-        title="Questions we get asked most."
+        eyebrow={eyebrow}
+        title={title}
+        lead={lead}
+        action={action}
       />
 
       <div className="mt-10 divide-y divide-line border-y border-line">
-        {faqs.map((faq, index) => (
+        {items.map((faq, index) => (
           <Reveal key={faq.id} delay={index * 60}>
             <details className="group py-5">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left">

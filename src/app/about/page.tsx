@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { shareCard } from "@/data/share-cards";
 import { JsonLd } from "@/components/JsonLd";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
 import { Button } from "@/components/ui/Button";
@@ -11,15 +12,17 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { LifestyleGallery } from "@/components/sections/LifestyleGallery";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { LeadCTA } from "@/components/sections/LeadCTA";
 import { galleryItems } from "@/data/gallery";
 
-const description = `${siteConfig.name} makes sofas, beds and custom furniture to order. Learn how we approach design, comfort, materials and customisation, and talk to us directly before you buy.`;
+const description = `${siteConfig.name} makes sofas, beds and custom furniture to order for homes across ${siteConfig.serviceArea}. How we approach design, comfort, materials and customisation, and how to talk to us before you buy.`;
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us - How We Make Furniture",
   description,
   path: "/about",
+  image: shareCard("about"),
 });
 
 const breadcrumb = [
@@ -66,7 +69,9 @@ export default function AboutPage() {
 
       <Testimonials tone="cream" />
 
-      <FaqSection />
+      <ServiceAreas tone="ivory" eyebrow="Where we work" />
+
+      <FaqSection tone="cream" />
 
       <LeadCTA />
     </>

@@ -32,7 +32,6 @@ function FeaturePanel({ feature }: { feature: PrimaryFeature }) {
           image={feature.image}
           ratio="fill"
           sizes="(max-width: 767px) 100vw, 50vw"
-          quality={84}
         />
       </Link>
 

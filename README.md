@@ -1,4 +1,4 @@
-# Aaram Furniture - website
+# Furniture Future - website
 
 A static, frontend-only marketing site for a furniture business, built to turn
 visitors into phone and WhatsApp enquiries. Sofas and beds lead; dining,
@@ -29,10 +29,10 @@ leaves it out rather than inventing it. Each item is a one-line change.
 | # | What | Where |
 | --- | --- | --- |
 | 1 | Business name and tagline | `src/config/site.ts` -> `name`, `tagline` |
-| 2 | **Live domain** (canonical URLs, sitemap, social cards) | `src/config/site.ts` -> `url` |
+| 2 | ~~Live domain~~ - set to `https://www.furniturefuture.com`. **Still to do at the host:** 301 non-`www` and `http` to this form | `src/config/site.ts` -> `url` |
 | 3 | Showroom address (shows the address block + "Get directions", and adds the address to Google's structured data) | `src/config/site.ts` -> `address` |
 | 4 | Business hours | `src/config/site.ts` -> `openingHours` |
-| 5 | Service area, e.g. "Delhi NCR" | `src/config/site.ts` -> `serviceArea` |
+| 5 | ~~Service area~~ - set to Delhi NCR. Check `serviceAreas` matches where you actually deliver | `src/config/site.ts` -> `serviceArea`, `serviceAreas` |
 | 6 | Email and social links | `src/config/site.ts` -> `email`, `social` |
 | 7 | **Catalogue PDF** | see `public/catalogue/README.md` |
 | 8 | **Real product photography** | see `public/images/README.md` |
@@ -40,6 +40,10 @@ leaves it out rather than inventing it. Each item is a one-line change.
 | 10 | **Real customer testimonials** - the six on the site now are samples (see "Social proof / testimonials") | `src/data/testimonials.ts` |
 | 11 | Review the FAQ answers you can actually commit to | `src/data/faqs.ts` |
 | 12 | Have the privacy policy and terms reviewed | `src/app/privacy`, `src/app/terms` |
+| 13 | **Blog publication dates** - all nine launch guides carry the launch date | `src/data/blog/index.ts` |
+| 14 | Confirm the places in "Where we deliver", Faridabad especially | `src/data/service-areas.ts` (and `serviceAreas` in the config) |
+| 15 | ~~Lead time~~ - set to 4 to 7 days from design confirmation. Split it per category if it really differs by piece | `src/config/site.ts` -> `leadTime` |
+| 16 | Replace the generated share cards with designed ones | `npm run share-images`, then see "The generated share cards" |
 
 The phone number `+91 93157 10072` is already wired into every call and
 WhatsApp link on the site. Change it once in `src/config/site.ts` and it updates
@@ -47,10 +51,15 @@ everywhere, including the structured data.
 
 ### Fields left empty on purpose
 
-`address`, `openingHours`, `serviceArea`, `email` and the social links are
-`null`. A `null` field is simply not rendered, and it is left out of the
-structured data too. No placeholder address, no invented opening hours, no
-fabricated ratings, review counts, years in business or customer numbers appear
+`address`, `openingHours`, `email` and the social links are `null`. A `null`
+field is simply not rendered, and it is left out of the structured data too.
+Three fields are confirmed and therefore do render: `serviceArea` and
+`serviceAreas` (so the market is named in the title, the hero and the "Where we
+deliver" section, and the individual towns reach `areaServed`), and `leadTime`
+(the only delivery figure the site states, deliberately a range rather than a
+single number, shown on `/custom-furniture` and on every product page). No
+placeholder address, no invented opening hours, no price, no delivery charge and
+no fabricated rating, review count, years in business or customer number appears
 anywhere on the site.
 
 ---
@@ -68,6 +77,12 @@ src/
   data/                 All page content. Edit here, not in components.
     products.ts         Sofas, beds and other furniture (sample catalogue)
     categories.ts  gallery.ts  features.ts  testimonials.ts  faqs.ts
+    custom-furniture.ts  What /custom-furniture renders
+    service-areas.ts     The places shown in "Where we deliver", checked
+                         against siteConfig.serviceAreas at module load
+    share-cards.ts       Social share card per fixed route, with its alt text
+    blog/               The guides: categories.ts, index.ts (the registry)
+      posts/            One file per article, authored as content blocks
   components/
     ui/                 Container, Section, Button, SmartImage, Reveal, Icons
     layout/             Header, Footer, FloatingContact, Wordmark
@@ -75,10 +90,17 @@ src/
                         ProductCard, FilterableProductGrid, CatalogueCTA,
                         WhyChooseUs, LifestyleGallery, Testimonials,
                         TrustSignals, AboutSection, LeadCTA, ContactSection,
-                        FaqSection, PageHero, EnquiryForm, LegalPage
+                        FaqSection, PageHero, EnquiryForm, LegalPage,
+                        GuidesTeaser, ServiceAreas
+    blog/               ArticleBody (the block renderer), ArticleCard,
+                        ArticleAside, ArticleGrid, ArticleFaqs, ArticleMeta,
+                        RelatedArticles, CategoryNav, Breadcrumbs, RichText
   app/                  Routes (see below), sitemap.ts, robots.ts, icons
+scripts/
+  generate-share-images.mjs   Builds the 1200x630 social cards
 public/
   images/               All photography (see public/images/README.md)
+    share/              Generated 1200x630 social cards - do not hand-edit
   catalogue/            Drop the catalogue PDF here (see its README)
 ```
 
@@ -89,18 +111,23 @@ that data, so the range can be rewritten without touching JSX.
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Homepage: hero, featured sofas, featured beds, the sofa/bed split feature, other furniture, why us, gallery, testimonials, catalogue, about, enquiry, contact, FAQ |
+| `/` | Homepage: hero, featured sofas, featured beds, the sofa/bed split feature, other furniture, why us, gallery, testimonials, catalogue, about, where we deliver, enquiry, contact, a three-question FAQ excerpt |
 | `/sofas` | Full sofa range, with category chips |
 | `/beds` | Full bed range, with category chips |
+| `/custom-furniture` | Made to order: what is built to measure, how the process runs, what is adjustable, and the custom-order FAQ |
 | `/furniture` | All categories, plus dining / living / TV units / wardrobes / chairs / custom (anchor targets) |
 | `/furniture/[slug]` | One page per design, prerendered from `src/data/products.ts` |
 | `/collection` | Lifestyle gallery |
+| `/blog` | The guides: featured, latest, and the topic grid |
+| `/blog/[slug]` | One page per article, prerendered from `src/data/blog` |
+| `/blog/category/[category]` | One archive per category |
 | `/about`, `/contact` | |
 | `/privacy`, `/terms` | Draft legal pages |
 | `/sitemap.xml`, `/robots.txt` | Generated from the same config |
 
 Adding a product to `src/data/products.ts` automatically creates its detail
 page, its sitemap entry and its listing card. Slugs come from the product name.
+The blog works the same way - see "The blog" below.
 
 ---
 
@@ -211,23 +238,144 @@ downloads. Nothing else changes.
 
 ---
 
+## The blog
+
+`/blog` is a search-acquisition system, not a news page. Every page it produces
+is static, and adding an article needs no new route.
+
+### Adding an article
+
+1. Write `src/data/blog/posts/<slug>.ts`, exporting one `BlogPost`.
+2. Import it in `src/data/blog/index.ts` and add it to `registry`.
+
+That is the whole process. The article page, its card, its category archive
+entry and its sitemap entry all follow. `src/data/blog/index.ts` throws at build
+time on a duplicate slug, a slug that collides with the `/blog/category` route,
+or a `relatedPosts` entry that does not exist, so a broken link fails the build
+rather than shipping.
+
+### Articles are structured content, not markup
+
+An article body is an array of typed blocks (`ArticleBlock` in
+`src/lib/types.ts`): `paragraph`, `heading`, `list`, `definitions`, `table`,
+`callout`, `checklist`, `image` and `cta`. `ArticleBody` owns all the
+typography, which means:
+
+- An author cannot break the page layout or the heading order. Only `h2` and
+  `h3` are expressible, so the article title stays the page's only `h1`.
+- Every in-article link is a real `next/link`. Paragraph text is a `RichText`
+  array, so a link is `{ text: "sofa designs", href: "/sofas" }` rather than a
+  string of HTML.
+- A `cta` block builds its WhatsApp link through `whatsappHref()`, like every
+  other CTA on the site.
+- There is no MDX, no markdown parser and no CMS - and so no new dependency.
+
+Reading time, the word count in the structured data and the "On this page"
+contents list are all derived from the blocks (`src/lib/blog.ts`), so they can
+never disagree with what the page shows.
+
+### Categories
+
+Six, in `src/data/blog/categories.ts`, each with its own archive page and its
+own meta description. A category exists because there is content for it: an
+empty one is hidden from the chip row and the topic grid, and would only be a
+thin page. `/blog/category/<slug>` is a real crawlable URL, not a client-side
+filter.
+
+### Internal linking runs both ways
+
+- **Blog to range**: contextual links inside the prose, a curated "From our
+  range" block in the sidebar (`relatedLinks`), and the in-article CTA.
+- **Range to blog**: `GuidesTeaser` on the homepage, `/sofas`, `/beds` and
+  `/furniture`. It matches articles by **tag**, not by slug, so a new guide
+  appears on the pages it is relevant to without anyone editing a route. It
+  renders nothing when no article matches.
+
+### What the blog does not do
+
+No author bios for people who do not exist - the byline is the business, and the
+structured data `author` is an `Organization`. No fabricated statistics, prices,
+delivery times or review counts, exactly as everywhere else. Local articles are
+written about a real local constraint (a service lift, a staircase turn,
+monsoon humidity), so no two of them are the same article with the city name
+swapped.
+
+---
+
 ## SEO
 
 - Per-page title, description and canonical URL, all derived from
   `src/config/site.ts` via `buildMetadata()`.
-- Open Graph and Twitter cards, with a 1200x630 share image.
-- `sitemap.xml` (33 URLs, including every product) and `robots.txt`, generated.
+- Open Graph and Twitter cards. **Every page's share image is a 1200x630 crop**
+  under `public/images/share/`, so no card is cropped to a slice of its middle
+  by the platform. `og:image:alt` and `twitter:image:alt` come from the
+  photograph's own alt text, not from a brand string.
+- `sitemap.xml` (50 URLs: every product, every article and every blog category)
+  and `robots.txt`, generated. Article entries carry the article's own
+  `lastModified`, not the build date.
 - Descriptive, hyphenated image filenames matching each product slug
   (`verde-velvet-sofa.jpg`), plus descriptive alt text on every image.
 - JSON-LD: `FurnitureStore` and `WebSite` on the homepage, `BreadcrumbList` on
   every inner page, `ItemList` on `/sofas`, `/beds`, `/furniture` and
-  `/collection`, `Product` on each design page, `FAQPage` on the homepage.
+  `/collection`, `Product` on each design page, `FAQPage` on the homepage,
+  `Blog` on `/blog`, `CollectionPage` on each category archive, and
+  `BlogPosting` on each article. `FAQPage` is emitted on an article only when
+  that article actually renders a FAQ list, and from the same data.
+- Open Graph `type` is `article` on the guides, with `published_time`, `section`
+  and `tag`. `og:image:width`/`height` are declared only for images known to be
+  1200x630 - the generated cards and `og-cover.jpg` - because stating those
+  dimensions for a differently shaped photograph makes platforms crop the card
+  wrongly.
+- `not-found.tsx` has its own metadata, so a dead URL no longer advertises
+  itself on social platforms as the homepage.
+- The market is named in the homepage title, the hero sub-headline and the
+  meta description, and the individual towns are rendered in a "Where we
+  deliver" section on `/`, `/about`, `/contact` and `/custom-furniture`. Before
+  that, not one of them appeared in any heading, paragraph or link on the site -
+  they existed only inside the `areaServed` JSON-LD, which no visitor and no
+  ranking factor reads as page content.
 - **No `aggregateRating`, `review`, `offers` or `priceRange` is emitted
   anywhere.** Those need verified reviews and real prices; publishing invented
   ones risks a manual penalty as well as being untrue.
 - One `<h1>` per page and a clean heading order throughout.
 
-Set the real domain in `src/config/site.ts` before submitting the sitemap.
+The domain is set (`https://www.furniturefuture.com`), so canonicals, the
+sitemap and every social URL resolve. Two things still have to happen outside
+this repo, in this order:
+
+1. **Enforce the `www` form and https at the host, as 301s.** A redirect written
+   in `next.config.ts` would still let some setups answer the non-canonical host
+   with a 200, which is what splits link equity across hostnames. Confirm with
+   `curl -I https://furniturefuture.com` and `curl -I http://www.furniturefuture.com`
+   that both return 301 and not 200.
+2. **Run each platform's share debugger once, deliberately, at launch** -
+   Facebook Sharing Debugger, LinkedIn Post Inspector, and paste the link to
+   yourself in WhatsApp and Slack. Facebook, LinkedIn and WhatsApp cache a share
+   preview per URL, so a card fetched before the site was live stays broken
+   until the cache is invalidated, and each debugger forces a re-scrape.
+
+`SEO_AUDIT_AND_LOCAL_SEO_PLAN.md` in the repo root is the full audit and the
+30/60/90-day plan. The items still outstanding there need business facts or
+owner action (Google Business Profile, reviews, citations, real product range,
+city landing pages), not code.
+
+### The generated share cards
+
+`npm run share-images` rebuilds every card in `public/images/share/` from the
+photography already in `public/images/`. **Re-run it after adding or renaming a
+product or an article**, because each card's filename is that item's slug and
+`src/data/products.ts` and `src/data/blog/index.ts` attach `shareImage` by that
+convention. A source wider than 1.45:1 is cropped to fill using sharp's
+attention strategy; a squarer or portrait source is laid whole onto the site's
+cream field, because it cannot be cropped that hard without losing the subject
+the alt text describes.
+
+These are mechanical crops standing in for a designed set. Section 31.4 of the
+audit specifies what should replace them: own photography, a discreet wordmark
+on the route cards, and no text at all on the article and product cards. Name
+any replacement with a new filename (`og-cover-2026-09.jpg`, not a second
+`og-cover.jpg`) - platforms cache by URL, and overwriting in place is the usual
+reason a fixed card keeps rendering the old image for weeks.
 
 ---
 
@@ -253,13 +401,15 @@ Verified in a browser rather than assumed:
 
 ## Performance notes
 
-- All 33 routes are prerendered as static HTML at build time.
-- Only the hero photograph is `priority`; everything else lazy-loads.
+- All 55 routes are prerendered as static HTML at build time.
+- Only the hero photograph is `preload`; everything else lazy-loads.
 - Every image sits in a fixed-ratio frame, so there is no layout shift, and all
   use `next/image` with a `sizes` string matched to the real rendered width.
 - Client components are limited to the five that genuinely need interaction:
   `Header`, `FloatingContact`, `Reveal`, `EnquiryForm` and
-  `FilterableProductGrid`. Everything else is a server component.
+  `FilterableProductGrid`. Everything else is a server component, the whole
+  blog included: the category chips are links, the FAQ accordions are
+  `<details>`, and the article sidebar is `position: sticky`.
 - Measured on the production build: CLS 0 on every page, homepage LCP well under
   half a second locally, ~150KB of compressed JavaScript (the Next.js/React
   baseline).

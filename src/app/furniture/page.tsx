@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { moreFurniture, sofas, beds } from "@/data/products";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
 import { breadcrumbJsonLd, buildMetadata, productListJsonLd } from "@/lib/seo";
+import { shareCard } from "@/data/share-cards";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { Section, SectionHeading } from "@/components/ui/Section";
@@ -12,6 +13,7 @@ import { CategoryGrid } from "@/components/sections/CategoryGrid";
 import { ProductCard } from "@/components/sections/ProductCard";
 import { CatalogueCTA } from "@/components/sections/CatalogueCTA";
 import { LeadCTA } from "@/components/sections/LeadCTA";
+import { GuidesTeaser } from "@/components/sections/GuidesTeaser";
 
 const description =
   "Every furniture category we make: sofas, beds, dining tables and sets, centre and side tables, TV units, wardrobes, chairs, recliners and fully custom pieces built to your measurements.";
@@ -20,6 +22,7 @@ export const metadata: Metadata = buildMetadata({
   title: "All Furniture - Sofas, Beds, Dining, Storage & Custom",
   description,
   path: "/furniture",
+  image: shareCard("furniture"),
 });
 
 const breadcrumb = [
@@ -205,6 +208,15 @@ export default function FurniturePage() {
       </Section>
 
       <CatalogueCTA />
+
+      <GuidesTeaser
+        tags={["made to measure", "buying guide", "layout"]}
+        eyebrow="Planning a room"
+        title="Which pieces are worth having made?"
+        lead="Guides on made-to-measure work, planning a whole flat and working around the layout you already have."
+        tone="cream"
+        ctaLabel="All furniture guides"
+      />
 
       <LeadCTA />
     </>

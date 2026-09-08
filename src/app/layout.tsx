@@ -23,7 +23,11 @@ const sans = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Modern Sofas, Beds & Custom Furniture`,
+    /* Names the differentiator and the market, not just the brand: for a local
+       business the homepage is normally what ranks for the primary service plus
+       the primary place. Individual cities are left to the body copy and the
+       "Where we deliver" section rather than stuffed into 60 characters. */
+    default: `Custom Sofas & Beds in ${siteConfig.serviceArea} | ${siteConfig.name}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -69,7 +73,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "en_IN",
     url: siteConfig.url,
-    title: `${siteConfig.name} | Modern Sofas, Beds & Custom Furniture`,
+    title: `Custom Sofas & Beds in ${siteConfig.serviceArea} | ${siteConfig.name}`,
     description: siteConfig.description,
     images: [
       {
@@ -82,7 +86,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Modern Sofas, Beds & Custom Furniture`,
+    title: `Custom Sofas & Beds in ${siteConfig.serviceArea} | ${siteConfig.name}`,
     description: siteConfig.description,
     images: ["/images/og-cover.jpg"],
   },

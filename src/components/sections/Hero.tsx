@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { siteConfig } from "@/config/site";
 import { heroTrustPoints } from "@/data/features";
 import { beds, sofas } from "@/data/products";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
@@ -61,7 +62,6 @@ function ShortcutCard({ shortcut, compact }: { shortcut: HeroShortcut; compact?:
           alt={shortcut.image.alt}
           fill
           sizes="64px"
-          quality={70}
           className="object-cover transition-transform duration-700 ease-[var(--ease-premium)] group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
       </span>
@@ -89,7 +89,7 @@ function ShortcutCard({ shortcut, compact }: { shortcut: HeroShortcut; compact?:
  *
  * The header renders transparently over this section, so a warm scrim runs from
  * the top-left to keep both the navigation and the headline legible without
- * turning the page dark. The photograph is the only `priority` image on the
+ * turning the page dark. The photograph is the only preloaded image on the
  * site; everything below the fold lazy-loads.
  */
 export function Hero() {
@@ -99,9 +99,8 @@ export function Hero() {
         src="/images/hero/modern-living-room-with-light-sectional-sofa.jpg"
         alt="Contemporary living room with a large light sectional sofa, a low centre table and a timber feature wall"
         fill
-        priority
+        preload
         fetchPriority="high"
-        quality={85}
         sizes="100vw"
         placeholder="blur"
         blurDataURL={BLUR_DATA_URL}
@@ -129,8 +128,12 @@ export function Hero() {
               Sofas and beds designed to make your space feel like home.
             </h1>
 
+            {/* The market is named here rather than in the h1: the headline
+                stays human, and "Delhi NCR" still lands in the page's opening
+                copy where it counts. `serviceArea` is owner-confirmed. */}
             <p className="animate-rise mt-5 max-w-lg text-base leading-relaxed text-white/80 [animation-delay:200ms] sm:text-lg">
-              Made to order in the size, fabric and finish you choose.
+              Made to order in the size, fabric and finish you choose, for homes across{" "}
+              {siteConfig.serviceArea}.
             </p>
 
             <div className="animate-rise mt-8 flex flex-col gap-3 [animation-delay:300ms] sm:flex-row sm:flex-wrap sm:items-center">

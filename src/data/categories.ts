@@ -49,7 +49,7 @@ export const categories: Category[] = [
     description: "Centre tables, side tables and accent seating that pulls a room together.",
     image: {
       src: "/images/categories/light-living-room-with-grey-sofa.jpg",
-      alt: "Light living room with a grey sofa, round centre table and floor cushions",
+      alt: "Mustard yellow accent chair beside a brass floor lamp, with a wall-mounted screen and low media unit",
     },
     href: "/furniture#living-room",
     emphasis: "secondary",
@@ -97,9 +97,9 @@ export const categories: Category[] = [
     description: "Have a design in mind? Share a reference and we build to your measurements.",
     image: {
       src: "/images/categories/bespoke-joinery-with-accent-chair.jpg",
-      alt: "Bespoke joinery and a mustard accent chair in a modern interior",
+      alt: "Grey sofa with turned wooden side tables and a knitted pouf on a jute rug",
     },
-    href: "/furniture#custom",
+    href: "/custom-furniture",
     emphasis: "secondary",
     pieces: ["Made to measure", "Your design"],
   },

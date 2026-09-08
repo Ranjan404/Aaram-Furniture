@@ -11,11 +11,11 @@ import { ArrowUpRightIcon } from "@/components/ui/Icons";
 function CategoryCard({
   category,
   featured,
-  priority,
+  preload,
 }: {
   category: Category;
   featured?: boolean;
-  priority?: boolean;
+  preload?: boolean;
 }) {
   return (
     <Link
@@ -30,7 +30,7 @@ function CategoryCard({
         image={category.image}
         ratio={featured ? "wide" : "square"}
         className={featured ? undefined : "sm:aspect-[4/3]"}
-        priority={priority}
+        preload={preload}
         /* Secondary cards are a two-up grid at every width, so they are never
            full-bleed - claiming 92vw on phones would ship a needlessly large
            file. Featured cards do go full width below the md breakpoint. */

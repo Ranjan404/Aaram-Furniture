@@ -1,4 +1,4 @@
-# Aaram Furniture - project conventions
+# Furniture Future - project conventions
 
 Static, frontend-only lead-generation site. Next.js 16 App Router, React 19,
 TypeScript, Tailwind v4. No backend, database, CMS or auth - do not add one.
@@ -9,7 +9,12 @@ Read `README.md` first; it covers the architecture and the pre-launch checklist.
 
 1. **Content lives in `src/data/*.ts`, never hard-coded in components.**
    Business facts (name, phone, address, catalogue) live only in
-   `src/config/site.ts`.
+   `src/config/site.ts`. Blog articles are `src/data/blog/posts/*.ts`,
+   registered in `src/data/blog/index.ts` - see "The blog" in `README.md`.
+   The places shown in "Where we deliver" are in `src/data/service-areas.ts`
+   and are checked at module load against `siteConfig.serviceAreas`, so the
+   site can never show a place the config does not claim. Add to the config
+   first.
 2. **Never invent business facts.** No addresses, opening hours, prices, review
    counts, ratings, awards or years in business unless they are already in the
    repo. Fields that are unknown are typed `| null`, are not rendered, and are
@@ -32,12 +37,29 @@ Read `README.md` first; it covers the architecture and the pre-launch checklist.
    variant or wrap the element instead.
 7. **Server components by default.** Only `Header`, `FloatingContact`, `Reveal`
    and `EnquiryForm` are client components. Justify any new one.
-8. **Images go through `SmartImage`** with a `sizes` string matching the real
-   rendered width, and meaningful alt text. Only the hero is `priority`.
-9. **Vary CTA wording by context** ("Explore sofa designs", "View bed designs",
+8. **A new static route must be added to `src/app/sitemap.ts` by hand**, and a
+   new product or article needs `npm run share-images` re-run, because each
+   share card's filename is that item's slug. Both are silent failures
+   otherwise: an absent sitemap entry, or a 404 share card.
+9. **Images go through `SmartImage`** with a `sizes` string matching the real
+   rendered width, and meaningful alt text. Only the hero is `preload`
+   (`priority` is deprecated in Next 16). Quality is left at the default: Next
+   16 allows only the qualities listed in `images.qualities`, which defaults to
+   `[75]`, so a `quality` prop outside that list is silently coerced.
+10. **Vary CTA wording by context** ("Explore sofa designs", "View bed designs",
    "Discuss your requirement", "Call for enquiry"). The same label repeated in
    every section reads as a template.
-10. Keep `npm run build` and `npx eslint .` clean before finishing.
+11. **Blog articles are typed content blocks, not markup.** Author them as
+    `ArticleBlock[]`; `ArticleBody` owns the typography. Only `h2`/`h3` exist,
+    so the title stays the page's only `h1`. In-prose links are `RichText`
+    nodes (`{ text, href }`), never HTML strings. Do not add MDX, a markdown
+    parser or a CMS.
+12. **A blog category needs content behind it, and a local article needs a real
+    local subject.** Never publish the same guide with the city name swapped,
+    and never invent an author, a statistic, a price or a delivery time in an
+    article any more than anywhere else. `FAQPage` is emitted only from the
+    `faqs` a page actually renders.
+13. Keep `npm run build` and `npx eslint .` clean before finishing.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

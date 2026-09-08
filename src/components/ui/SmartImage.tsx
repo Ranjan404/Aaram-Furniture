@@ -11,6 +11,11 @@ const ratios = {
   wide: "aspect-[16/10]",
   cinema: "aspect-[21/9]",
   product: "aspect-[4/3] sm:aspect-[5/4]",
+  /* Article hero. A 21:9 strip is only a hundred-odd pixels tall on a phone,
+     so the ratio opens up as the viewport narrows. Kept as one class string
+     here rather than layered on through `className`, where two `aspect-*`
+     utilities would resolve by stylesheet order instead of class order. */
+  editorial: "aspect-[5/4] sm:aspect-[16/10] lg:aspect-[21/9]",
   /** No intrinsic ratio - the frame fills a parent that already has a height. */
   fill: "h-full w-full",
 } as const;
@@ -29,21 +34,20 @@ export function SmartImage({
   image,
   ratio = "landscape",
   sizes,
-  priority = false,
+  preload = false,
   className,
   imageClassName,
   zoom = true,
-  quality = 82,
 }: {
   image: ImageAsset;
   ratio?: ImageRatio;
   sizes: string;
-  priority?: boolean;
+  /** Inserts a <link rel="preload"> for this image. Only the hero uses it. */
+  preload?: boolean;
   className?: string;
   imageClassName?: string;
   /** Slow zoom on hover of the closest `group` ancestor. */
   zoom?: boolean;
-  quality?: number;
 }) {
   return (
     <div
@@ -58,9 +62,8 @@ export function SmartImage({
         alt={image.alt}
         fill
         sizes={sizes}
-        quality={quality}
-        priority={priority}
-        loading={priority ? undefined : "lazy"}
+        preload={preload}
+        loading={preload ? undefined : "lazy"}
         placeholder="blur"
         blurDataURL={BLUR_DATA_URL}
         className={cn(

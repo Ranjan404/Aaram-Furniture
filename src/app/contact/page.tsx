@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
-import { breadcrumbJsonLd, buildMetadata, furnitureStoreJsonLd } from "@/lib/seo";
+import { faqs } from "@/data/faqs";
+import { breadcrumbJsonLd, buildMetadata, faqJsonLd, furnitureStoreJsonLd } from "@/lib/seo";
+import { shareCard } from "@/data/share-cards";
 import { JsonLd } from "@/components/JsonLd";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
 import { Button } from "@/components/ui/Button";
@@ -10,6 +12,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { TrustSignals } from "@/components/sections/TrustSignals";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { CatalogueCTA } from "@/components/sections/CatalogueCTA";
+import { ServiceAreas } from "@/components/sections/ServiceAreas";
 
 const description = `Call ${siteConfig.phone.display} or message us on WhatsApp for sofa, bed and custom furniture designs, sizes and quotes. Send your room measurements and we will come back with options.`;
 
@@ -17,6 +20,7 @@ export const metadata: Metadata = buildMetadata({
   title: "Contact - Call or WhatsApp for Furniture Designs",
   description,
   path: "/contact",
+  image: shareCard("contact"),
 });
 
 const breadcrumb = [
@@ -29,6 +33,9 @@ export default function ContactPage() {
     <>
       <JsonLd data={breadcrumbJsonLd(breadcrumb)} />
       <JsonLd data={furnitureStoreJsonLd()} />
+      {/* The full accordion now lives here rather than on the homepage, so the
+          FAQPage node follows it. Emitted from exactly what is rendered. */}
+      <JsonLd data={faqJsonLd(faqs)} />
 
       <PageHero
         eyebrow="Contact"
@@ -53,7 +60,9 @@ export default function ContactPage() {
 
       <ContactSection />
 
-      <TrustSignals tone="ivory" />
+      <ServiceAreas tone="ivory" />
+
+      <TrustSignals tone="cream" />
 
       <CatalogueCTA />
 

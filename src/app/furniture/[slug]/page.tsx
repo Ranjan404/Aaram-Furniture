@@ -52,15 +52,22 @@ export async function generateMetadata({
     title: `${product.name} - ${product.category}`,
     description: `${product.description} Made to order in your size and finish. Call ${siteConfig.phone.display} or message us on WhatsApp for details.`,
     path: `/furniture/${product.slug}`,
-    image: product.image.src,
+    image: product.shareImage ?? product.image,
   });
 }
 
-/** Options that apply to every made-to-order piece. */
+/**
+ * Options that apply to every made-to-order piece. The build time is read from
+ * `siteConfig` rather than written out here, so it cannot drift from the same
+ * figure on `/custom-furniture`; the row disappears if it is ever unset.
+ */
 const madeToOrder = [
   "Size adjusted to your room measurements",
   "Fabric, leather or finish of your choice",
   "Left or right orientation where the design allows",
+  ...(siteConfig.leadTime
+    ? [`Built in ${siteConfig.leadTime} once the design is confirmed`]
+    : []),
   "Guidance on what suits daily use before you order",
 ];
 
@@ -125,8 +132,7 @@ export default async function ProductPage({ params }: PageProps<"/furniture/[slu
               <SmartImage
                 image={product.image}
                 ratio="wide"
-                priority
-                quality={88}
+                preload
                 zoom={false}
                 sizes="(max-width: 1023px) 92vw, 56vw"
                 className="rounded-[2rem] border border-line shadow-soft"
