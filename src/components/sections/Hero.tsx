@@ -96,8 +96,8 @@ export function Hero() {
   return (
     <section className="relative isolate flex min-h-[86svh] items-end overflow-hidden bg-ink lg:min-h-[92svh]">
       <Image
-        src="/images/hero/modern-living-room-with-light-sectional-sofa.jpg"
-        alt="Light grey channel-tufted three-seater sofa and loveseat set on white marble flooring, styled with sheer curtains"
+        src="/images/hero/light-living-room-grey-sectional-sofa.jpg"
+        alt="Contemporary living room with a large light sectional sofa, a low centre table and a timber feature wall"
         fill
         preload
         fetchPriority="high"
