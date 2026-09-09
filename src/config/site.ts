@@ -50,7 +50,7 @@ export const siteConfig = {
    * answer with a 200 of their own, or the site's link equity is split across
    * hostnames. Check with `curl -I` after deploying.
    */
-  url: "https://www.furniturefuture.com",
+  url: "https://www.furniturefuture.in",
 
   /**
    * Meta description for the homepage, and the `description` on the
