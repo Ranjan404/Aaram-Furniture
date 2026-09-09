@@ -12,7 +12,7 @@ export const categories: Category[] = [
       "Three-seaters, L-shaped sectionals, loveseats and modular sofas in fabric and leather.",
     image: {
       src: "/images/categories/beige-l-shape-sectional-sofa.jpg",
-      alt: "Beige L-shaped sectional sofa in a bright, contemporary living room",
+      alt: "Navy blue U-shaped sectional sofa with gold trim legs in the showroom, kitchen visible behind",
     },
     href: "/sofas",
     emphasis: "primary",
@@ -25,7 +25,7 @@ export const categories: Category[] = [
       "Upholstered, storage and platform beds in king, queen and custom sizes.",
     image: {
       src: "/images/categories/modern-king-bed-with-panelled-headboard.jpg",
-      alt: "Modern king size bed with a slatted wood panel headboard wall",
+      alt: "Charcoal grey channel-tufted storage bed with its hydraulic base lifted open, city skyline through the window",
     },
     href: "/beds",
     emphasis: "primary",
@@ -85,7 +85,7 @@ export const categories: Category[] = [
     description: "Accent chairs, lounge chairs and recliners for reading corners.",
     image: {
       src: "/images/categories/contemporary-moulded-accent-chair.jpg",
-      alt: "Contemporary moulded accent chair with tapered wooden legs",
+      alt: "Pair of burnt-orange scalloped petal-back accent chairs photographed outside the workshop",
     },
     href: "/furniture#chairs",
     emphasis: "secondary",
@@ -143,7 +143,7 @@ export const primaryFeatures: PrimaryFeature[] = [
        thin catalogue. */
     image: {
       src: "/images/products/sofas/halden-modular-sectional-sofa.jpg",
-      alt: "Grey modular sectional sofa with cushions in a naturally lit living room",
+      alt: "Charcoal grey modular channel-tufted sectional sofa, built from individual seat modules, fresh from the workshop",
     },
     points: ["Three-seaters & loveseats", "L-shape & modular", "Fabric or leather"],
     ctaLabel: "Explore sofa designs",
@@ -158,7 +158,7 @@ export const primaryFeatures: PrimaryFeature[] = [
     href: "/beds",
     image: {
       src: "/images/categories/modern-king-bed-with-panelled-headboard.jpg",
-      alt: "Modern king size bed with a slatted wood panel headboard wall",
+      alt: "Charcoal grey channel-tufted storage bed with its hydraulic base lifted open, city skyline through the window",
     },
     points: ["King, queen & custom", "Upholstered & platform", "Hydraulic storage"],
     ctaLabel: "View bed designs",

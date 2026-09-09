@@ -74,7 +74,7 @@ export default function SofasPage() {
       <CatalogueCTA />
 
       <LifestyleGallery
-        items={galleryItems.filter((item) => item.shape !== "tall").slice(0, 6)}
+        items={galleryItems.filter((item) => item.room === "living-room").slice(0, 6)}
         eyebrow="In context"
         title="Sofas in real rooms."
         lead="How the same shapes read in different spaces, materials and light."

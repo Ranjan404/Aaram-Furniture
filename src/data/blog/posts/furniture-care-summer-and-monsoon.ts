@@ -14,7 +14,7 @@ export const furnitureCareSummerAndMonsoon: BlogPost = {
   publishedAt: "2026-09-07",
   image: {
     src: "/images/about/styled-living-room-with-sectional-sofa.jpg",
-    alt: "Cream L-shape sectional sofa with a chaise, kept clean and styled with cushions and a throw",
+    alt: "Teal channel-tufted L-shaped sofa with a matching ottoman, kept clean and styled with patterned cushions",
   },
   takeaways: [
     "Vacuum upholstery weekly with a brush head. It is the single highest-value habit in a dusty climate.",

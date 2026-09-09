@@ -72,7 +72,7 @@ export default function BedsPage() {
       <CatalogueCTA />
 
       <LifestyleGallery
-        items={galleryItems.slice(2, 8)}
+        items={galleryItems.filter((item) => item.room === "bedroom").slice(0, 6)}
         eyebrow="In context"
         title="Bedrooms we would happily sleep in."
         lead="Headboard height, bedside proportions and the space you leave to walk around all change how a bedroom feels."

@@ -74,6 +74,12 @@ export interface GalleryItem {
   caption: string;
   /** Controls the cell footprint in the masonry-style gallery grid. */
   shape: "tall" | "wide" | "square";
+  /**
+   * Which room the photograph actually shows. Used to filter the "In context"
+   * gallery on `/sofas` and `/beds` so each page only shows its own furniture -
+   * position-based slicing previously let bed photos leak onto the sofas page.
+   */
+  room: "living-room" | "bedroom";
 }
 
 export interface Testimonial {

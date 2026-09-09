@@ -113,7 +113,7 @@ export function AboutSection({
                 <SmartImage
                   image={{
                     src: "/images/about/contemporary-furniture-showroom-lounge.jpg",
-                    alt: "Bright showroom-style lounge with contemporary armchairs and a low table",
+                    alt: "Teal and ivory two-tone L-shaped sectional sofa with a round tufted ottoman, in the showroom",
                   }}
                   ratio="wide"
                   sizes="(max-width: 1023px) 92vw, 46vw"
@@ -124,7 +124,7 @@ export function AboutSection({
                 <SmartImage
                   image={{
                     src: "/images/about/furniture-workshop-craftsmanship.jpg",
-                    alt: "Craftsman cutting timber components in a furniture workshop",
+                    alt: "Slate blue two-seater sofa finished and staged in the workshop, upholstery rolls in the background",
                   }}
                   ratio="square"
                   sizes="(max-width: 1023px) 46vw, 23vw"

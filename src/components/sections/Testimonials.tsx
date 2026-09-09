@@ -20,7 +20,10 @@ function initialsFor(testimonial: Testimonial) {
 function Stars({ rating, tone }: { rating: number; tone: "dark" | "light" }) {
   return (
     <p
-      className={cn("flex items-center gap-1", tone === "light" ? "text-brass-soft" : "text-brass")}
+      className={cn(
+        "flex items-center gap-1",
+        tone === "light" ? "text-brass-soft" : "text-brass",
+      )}
       aria-label={`Rated ${rating} out of 5`}
     >
       {Array.from({ length: 5 }, (_, index) => (
@@ -53,10 +56,17 @@ function TestimonialCard({
       )}
     >
       <div className="flex items-start justify-between gap-4">
-        {testimonial.rating ? <Stars rating={testimonial.rating} tone={tone} /> : <span />}
+        {testimonial.rating ? (
+          <Stars rating={testimonial.rating} tone={tone} />
+        ) : (
+          <span />
+        )}
         <QuoteIcon
           aria-hidden="true"
-          className={cn("size-7 shrink-0", featured ? "text-cream/25" : "text-brass-soft")}
+          className={cn(
+            "size-7 shrink-0",
+            featured ? "text-cream/25" : "text-brass-soft",
+          )}
         />
       </div>
 
@@ -81,7 +91,9 @@ function TestimonialCard({
           aria-hidden="true"
           className={cn(
             "grid size-11 shrink-0 place-items-center rounded-full font-display text-base",
-            featured ? "bg-cream/12 text-brass-soft" : "bg-sand text-brass-deep",
+            featured
+              ? "bg-cream/12 text-brass-soft"
+              : "bg-sand text-brass-deep",
           )}
         >
           {initialsFor(testimonial)}
@@ -101,7 +113,9 @@ function TestimonialCard({
               featured ? "text-cream/55" : "text-stone",
             )}
           >
-            {[testimonial.location, testimonial.product].filter(Boolean).join(" · ")}
+            {[testimonial.location, testimonial.product]
+              .filter(Boolean)
+              .join(" · ")}
           </span>
         </span>
       </figcaption>
@@ -157,23 +171,25 @@ export function Testimonials({ tone = "ivory" }: { tone?: "ivory" | "cream" }) {
             className="w-[82vw] max-w-sm shrink-0 snap-start sm:w-auto sm:max-w-none sm:shrink"
           >
             <Reveal delay={(index % 3) * 90} className="h-full">
-              <TestimonialCard testimonial={testimonial} featured={index === 0} />
+              <TestimonialCard
+                testimonial={testimonial}
+                featured={index === 0}
+              />
             </Reveal>
           </li>
         ))}
       </ul>
 
       {/* Swipe affordance, phones only. */}
-      <p className="mt-3 text-center text-xs text-stone sm:hidden">Swipe for more &rarr;</p>
+      <p className="mt-3 text-center text-xs text-stone sm:hidden">
+        Swipe for more &rarr;
+      </p>
 
       {!testimonialsAreVerified ? (
         <p className="mt-8 max-w-3xl text-xs leading-relaxed text-stone-light">
-          Sample layout content. These are not real customer reviews and are not attributed to any
-          person or review platform. Replace them in{" "}
-          <code className="rounded bg-sand px-1.5 py-0.5 text-[0.7rem] text-graphite">
-            src/data/testimonials.ts
-          </code>{" "}
-          with genuine feedback and this note disappears.
+          Sample layout content. These are not real customer reviews and are not
+          attributed to any person or review platform. Replace them if we have
+          genuine feedback and this note disappears.
         </p>
       ) : null}
     </Section>

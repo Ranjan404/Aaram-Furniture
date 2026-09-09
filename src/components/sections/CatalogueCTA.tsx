@@ -40,7 +40,7 @@ export function CatalogueCTA() {
                 <SmartImage
                   image={{
                     src: "/images/about/styled-living-room-with-sectional-sofa.jpg",
-                    alt: "Living room styled with a light sectional sofa, centre table and soft furnishings",
+                    alt: "Teal channel-tufted L-shaped sofa with a matching ottoman and open-shelf armrest, in the showroom",
                   }}
                   ratio="fill"
                   className="absolute inset-0"

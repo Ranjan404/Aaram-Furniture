@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Instrument_Serif, Manrope } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/layout/Header";
@@ -101,7 +102,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-IN" className={`${display.variable} ${sans.variable} h-full`}>
+    <html
+      lang="en-IN"
+      className={`${display.variable} ${sans.variable} h-full`}
+    >
       <body className="flex min-h-full flex-col bg-ivory">
         <a
           href="#main"
@@ -116,6 +120,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Footer />
         <FloatingContact />
       </body>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-Z54Q9G54K7"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-Z54Q9G54K7');
+        `}
+      </Script>
     </html>
   );
 }

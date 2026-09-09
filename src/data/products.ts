@@ -45,7 +45,7 @@ const sofaEntries: ProductInput[] = [
       "Clean lines and a slim profile in a deep velvet finish, built for apartments where every centimetre counts.",
     image: {
       src: "/images/products/sofas/verde-velvet-sofa.jpg",
-      alt: "Deep green velvet three-seater sofa on a light oak floor",
+      alt: "Olive green channel-tufted velvet three-seater sofa with two matching armchairs, photographed in the workshop",
     },
     highlights: ["Slim arm profile", "Velvet upholstery", "Fabric of your choice"],
     tags: ["Three-seater", "Fabric"],
@@ -61,7 +61,7 @@ const sofaEntries: ProductInput[] = [
       "A generous corner sectional with a chaise that can be built left or right handed to suit your room.",
     image: {
       src: "/images/products/sofas/meridian-l-shape-sectional-sofa.jpg",
-      alt: "Grey L-shaped sectional sofa with tufted cushions and matching ottomans, fresh off the workbench",
+      alt: "Charcoal grey modular channel-tufted L-shaped sectional sofa with a chaise, photographed in the yard",
     },
     highlights: ["Left or right chaise", "Seats 5 to 6", "Removable covers"],
     tags: ["L-shape", "Fabric"],
@@ -78,7 +78,7 @@ const sofaEntries: ProductInput[] = [
       "A compact two-seater with rounded arms and a buttoned back. Ideal for a balcony room, study or second seating zone.",
     image: {
       src: "/images/products/sofas/terra-two-seater-sofa.jpg",
-      alt: "Rust orange two-seater fabric sofa with a cushion, on a woven rug",
+      alt: "Terracotta and ivory two-tone two-seater sofa in the showroom",
     },
     highlights: ["Compact footprint", "Rounded arms", "Seats 2"],
     tags: ["Two-seater", "Fabric"],
@@ -109,7 +109,7 @@ const sofaEntries: ProductInput[] = [
       "Built from individual modules so the layout can be rearranged, extended or split between two rooms later.",
     image: {
       src: "/images/products/sofas/halden-modular-sectional-sofa.jpg",
-      alt: "Grey modular sectional sofa with cushions in a naturally lit living room",
+      alt: "Charcoal grey modular channel-tufted sectional sofa, built from individual seat modules, fresh from the workshop",
     },
     highlights: ["Rearrangeable modules", "Add units later", "Seats 4 to 7"],
     tags: ["Modular", "Fabric"],
@@ -125,7 +125,7 @@ const sofaEntries: ProductInput[] = [
       "An extra deep seat and feather-blend back cushions for households that treat the sofa as the main event.",
     image: {
       src: "/images/products/sofas/luma-lounge-sofa.jpg",
-      alt: "Deep grey lounge sofa with leather ottomans in a warm open plan room",
+      alt: "Deep-seated cream U-shaped lounge sectional with matching ottomans in the showroom",
     },
     highlights: ["Extra deep seat", "Soft back cushions", "Seats 4"],
     tags: ["Modular", "Fabric"],
@@ -191,7 +191,7 @@ const bedEntries: ProductInput[] = [
       "Full-width storage under a hydraulic lift base, sized to swallow bedding, luggage and off-season clothes.",
     image: {
       src: "/images/products/beds/vault-hydraulic-storage-bed.jpg",
-      alt: "King size storage bed with its base lifted open on hydraulic arms, showing the full-width storage beneath",
+      alt: "Charcoal grey channel-tufted storage bed with its base lifted open on hydraulic arms, showing the full-width storage beneath",
     },
     highlights: ["Hydraulic lift base", "Full-width storage", "King & queen"],
     tags: ["Storage", "King"],
@@ -363,7 +363,7 @@ const moreEntries: ProductInput[] = [
       "A small upholstered chair with a curved back, for a bedroom corner or beside a window.",
     image: {
       src: "/images/products/more/petal-upholstered-accent-chair.jpg",
-      alt: "Dusty pink upholstered accent chair with a scalloped, petal-shaped back",
+      alt: "Pink scalloped petal-back accent chairs with a matching loveseat, photographed outside the workshop",
     },
     highlights: ["Curved back", "Compact", "Fabric of your choice"],
     tags: ["Chairs", "Upholstered"],
