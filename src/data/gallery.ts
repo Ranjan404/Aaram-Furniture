@@ -3,32 +3,32 @@ import type { GalleryItem } from "@/lib/types";
 /**
  * Lifestyle gallery. Mixed shapes on purpose: `tall`, `wide` and `square`
  * cells give the grid an editorial rhythm instead of a uniform product grid.
- * Replace with real room photography from completed orders when available.
+ * Real photography from the workshop floor and completed installs.
  */
 export const galleryItems: GalleryItem[] = [
   {
     id: "g1",
     image: {
-      src: "/images/gallery/ivory-boucle-sofa-living-room.jpg",
-      alt: "Cream boucle sofa and armchair arranged around a round centre table",
+      src: "/images/gallery/dark-green-tufted-bed-in-styled-bedroom.jpg",
+      alt: "Bedroom with a dark green fan-tufted upholstered bed and gold-trimmed curtains",
     },
-    caption: "Living room in ivory and boucle",
+    caption: "Bed in emerald velvet",
     shape: "tall",
   },
   {
     id: "g2",
     image: {
-      src: "/images/gallery/twin-grey-sofas-living-room.jpg",
-      alt: "Pair of grey sofas facing each other across a marble centre table",
+      src: "/images/gallery/coral-bed-with-panelled-headboard-in-bedroom.jpg",
+      alt: "Coral upholstered bed with a panelled headboard installed beside a built-in wardrobe",
     },
-    caption: "Twin sofa layout",
+    caption: "Coral bed, freshly installed",
     shape: "wide",
   },
   {
     id: "g3",
     image: {
-      src: "/images/gallery/upholstered-bed-cushion-detail.jpg",
-      alt: "Close up of layered bedding and cushions on an upholstered bed",
+      src: "/images/gallery/cream-tufted-headboard-detail.jpg",
+      alt: "Close up of a cream channel-tufted bed headboard with brass trim",
     },
     caption: "Upholstery detail",
     shape: "square",
@@ -36,82 +36,82 @@ export const galleryItems: GalleryItem[] = [
   {
     id: "g4",
     image: {
-      src: "/images/gallery/bedroom-with-foot-of-bed-ottomans.jpg",
-      alt: "Bedroom with a low bed, two ottomans at the foot and framed artwork",
+      src: "/images/gallery/maroon-channel-tufted-bed-with-rug.jpg",
+      alt: "Deep red channel-tufted bed dressed on a patterned rug in a furnished bedroom",
     },
-    caption: "Bedroom with foot-of-bed ottomans",
+    caption: "Channel-tufted bed in maroon",
     shape: "wide",
   },
   {
     id: "g5",
     image: {
-      src: "/images/gallery/minimal-interior-with-black-bench.jpg",
-      alt: "Minimal white interior with a slim black bench in an arched alcove",
+      src: "/images/gallery/beige-petal-accent-chairs-pair.jpg",
+      alt: "Pair of beige scalloped petal-back accent chairs beside a green upholstered bed",
     },
-    caption: "Quiet, minimal lines",
+    caption: "Petal-back chairs, made to pair",
     shape: "tall",
   },
   {
     id: "g6",
     image: {
-      src: "/images/gallery/wooden-bed-with-green-bedding.jpg",
-      alt: "Bedroom with a wooden bed, green bedding and hanging plants",
+      src: "/images/gallery/sage-green-sunburst-headboard-bedroom.jpg",
+      alt: "Sage green bed with a sunburst channel-tufted headboard in a bright bedroom",
     },
-    caption: "Bedroom in green and timber",
+    caption: "Bedroom in sage and light",
     shape: "square",
   },
   {
     id: "g7",
     image: {
-      src: "/images/gallery/open-plan-living-and-dining-room.jpg",
-      alt: "Open plan living and dining space with beige armchairs and a sofa",
+      src: "/images/gallery/hotel-style-headboard-bed-with-nightstands.jpg",
+      alt: "Grey upholstered bed with a wide headboard and matching nightstands",
     },
-    caption: "Open plan living and dining",
+    caption: "Hotel-style headboard and nightstands",
     shape: "wide",
   },
   {
     id: "g8",
     image: {
-      src: "/images/gallery/light-filled-white-bedroom.jpg",
-      alt: "Bright white bedroom with a dressed bed and a bench at its foot",
+      src: "/images/gallery/olive-headboard-bed-with-matching-nightstands.jpg",
+      alt: "Olive and charcoal panelled bed with matching bedside nightstands",
     },
-    caption: "Light-filled bedroom",
+    caption: "Bed and nightstands, matched",
     shape: "square",
   },
   {
     id: "g9",
     image: {
-      src: "/images/gallery/sculptural-seating-living-room.jpg",
-      alt: "Living room with sculptural seating, textured cushions and tall windows",
+      src: "/images/gallery/craftsmen-upholstering-sectional-sofa-workshop.jpg",
+      alt: "Craftsmen finishing a grey L-shaped sectional sofa on the workshop floor",
     },
-    caption: "Sculptural seating",
+    caption: "On the workshop floor",
     shape: "tall",
   },
   {
     id: "g10",
     image: {
-      src: "/images/gallery/lounge-seating-in-brick-walled-space.jpg",
-      alt: "Lounge seating and low tables in a brick-walled social space",
+      src: "/images/gallery/storage-bed-with-lifted-base-workshop.jpg",
+      alt: "White upholstered storage bed with its base lifted open, fresh from the workshop",
     },
-    caption: "Lounge and low tables",
+    caption: "Storage bed, base lifted",
     shape: "wide",
   },
   {
     id: "g11",
     image: {
-      src: "/images/gallery/grey-sofa-and-media-wall-living-room.jpg",
-      alt: "Grey living room with a sofa, centre table and a wall mounted TV unit",
+      src: "/images/gallery/brown-petal-accent-chairs-with-patterned-cushions.jpg",
+      alt: "Pair of brown scalloped petal-back accent chairs with patterned cushions",
     },
-    caption: "Sofa and media wall",
+    caption: "Petal-back chairs in brown",
     shape: "square",
   },
   {
     id: "g12",
     image: {
-      src: "/images/gallery/side-table-and-lamp-detail.jpg",
-      alt: "Detail of a side table with a lamp and a plant against a white wall",
+      src: "/images/gallery/tan-channel-headboard-bed-in-bedroom.jpg",
+      alt: "Tan channel-tufted bed installed in a bedroom beside a wood panelled door",
     },
-    caption: "Side table detail",
+    caption: "Installed and ready",
     shape: "square",
   },
 ];

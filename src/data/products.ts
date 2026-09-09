@@ -61,7 +61,7 @@ const sofaEntries: ProductInput[] = [
       "A generous corner sectional with a chaise that can be built left or right handed to suit your room.",
     image: {
       src: "/images/products/sofas/meridian-l-shape-sectional-sofa.jpg",
-      alt: "Charcoal L-shaped sectional sofa with a chaise in a modern living room",
+      alt: "Grey L-shaped sectional sofa with tufted cushions and matching ottomans, fresh off the workbench",
     },
     highlights: ["Left or right chaise", "Seats 5 to 6", "Removable covers"],
     tags: ["L-shape", "Fabric"],
@@ -191,7 +191,7 @@ const bedEntries: ProductInput[] = [
       "Full-width storage under a hydraulic lift base, sized to swallow bedding, luggage and off-season clothes.",
     image: {
       src: "/images/products/beds/vault-hydraulic-storage-bed.jpg",
-      alt: "King size storage bed with a padded headboard against a dark feature wall",
+      alt: "King size storage bed with its base lifted open on hydraulic arms, showing the full-width storage beneath",
     },
     highlights: ["Hydraulic lift base", "Full-width storage", "King & queen"],
     tags: ["Storage", "King"],
@@ -363,7 +363,7 @@ const moreEntries: ProductInput[] = [
       "A small upholstered chair with a curved back, for a bedroom corner or beside a window.",
     image: {
       src: "/images/products/more/petal-upholstered-accent-chair.jpg",
-      alt: "Cream upholstered accent chair with a curved buttoned back",
+      alt: "Dusty pink upholstered accent chair with a scalloped, petal-shaped back",
     },
     highlights: ["Curved back", "Compact", "Fabric of your choice"],
     tags: ["Chairs", "Upholstered"],
