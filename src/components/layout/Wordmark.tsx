@@ -20,8 +20,9 @@ export function Wordmark({
   return (
     <Link
       href={href}
+      /* No `aria-label`: the visible name and tagline already name the link,
+         and a label that differs from them breaks voice control. */
       className={cn("group flex min-w-0 items-center gap-3", className)}
-      aria-label={`${siteConfig.name} - home`}
     >
       <span
         aria-hidden="true"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 import { sofas } from "@/data/products";
 import { galleryItems } from "@/data/gallery";
 import { waMessages, whatsappHref, telHref } from "@/lib/contact";
@@ -15,11 +16,12 @@ import { CatalogueCTA } from "@/components/sections/CatalogueCTA";
 import { LeadCTA } from "@/components/sections/LeadCTA";
 import { GuidesTeaser } from "@/components/sections/GuidesTeaser";
 
-const description =
-  "Modern sofa designs made to order: three-seaters, L-shaped sectionals, modular sofas and loveseats in the fabric, leather and size you choose. Call or WhatsApp for designs and a quote.";
+/* Title and description both name the market (owner-confirmed) and stay
+   inside what Google shows: ~60 characters with the brand, ~155 here. */
+const description = `Sofas made to order in ${siteConfig.serviceArea}: three-seaters, L-shaped sectionals, modular sofas and loveseats in your fabric and size. Call or WhatsApp for a quote.`;
 
 export const metadata: Metadata = buildMetadata({
-  title: "Sofa Designs - Modern, L-Shape & Custom Sofas",
+  title: `Sofa Designs Made to Order in ${siteConfig.serviceArea}`,
   description,
   path: "/sofas",
   image: shareCard("sofas"),

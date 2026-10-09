@@ -118,6 +118,15 @@ export const siteConfig = {
     "Faridabad",
   ] as string[] | null,
 
+  // -- Analytics -------------------------------------------------------------
+  /**
+   * Google Analytics 4 measurement ID. Loaded in `src/app/layout.tsx` and
+   * disclosed in `/privacy`, which reads this same field so the policy can
+   * never claim "no analytics" while analytics is running. Set to null to
+   * remove GA from every page and from the policy together.
+   */
+  googleAnalyticsId: "G-Z54Q9G54K7" as string | null,
+
   // -- Social (optional) -----------------------------------------------------
   social: {
     instagram: null as string | null,

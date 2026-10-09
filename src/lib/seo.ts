@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import type { BlogCategory, BlogPost, ImageAsset, Product } from "@/lib/types";
 import { postTimestamp, readingMinutes, wordCount } from "@/lib/blog";
+import { serviceAreas as renderedAreas } from "@/data/service-areas";
 
 /**
  * Share images live under this directory and are all cropped to exactly
@@ -180,7 +181,12 @@ export function furnitureStoreJsonLd() {
     /* Prefer the itemised list so the individual towns are stated; fall back to
        the single display phrase. Omitted entirely when neither is set. */
     ...(serviceAreas?.length
-      ? { areaServed: serviceAreas.map((name) => ({ "@type": "Place", name })) }
+      ? {
+          areaServed: serviceAreas.map((name) => {
+            const alias = renderedAreas.find((area) => area.name === name)?.alias;
+            return { "@type": "Place", name, ...(alias ? { alternateName: alias } : {}) };
+          }),
+        }
       : serviceArea
         ? { areaServed: { "@type": "Place", name: serviceArea } }
         : {}),

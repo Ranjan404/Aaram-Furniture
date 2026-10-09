@@ -42,7 +42,10 @@ export function SmartImage({
   image: ImageAsset;
   ratio?: ImageRatio;
   sizes: string;
-  /** Inserts a <link rel="preload"> for this image. Only the hero uses it. */
+  /**
+   * Inserts a <link rel="preload"> for this image, at high fetch priority.
+   * Only a route's LCP image uses it.
+   */
   preload?: boolean;
   className?: string;
   imageClassName?: string;
@@ -63,6 +66,9 @@ export function SmartImage({
         fill
         sizes={sizes}
         preload={preload}
+        /* Without this the preload goes out at default priority and races the
+           font and analytics preloads for the LCP slot. */
+        fetchPriority={preload ? "high" : undefined}
         loading={preload ? undefined : "lazy"}
         placeholder="blur"
         blurDataURL={BLUR_DATA_URL}

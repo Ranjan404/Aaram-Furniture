@@ -7,7 +7,7 @@ import type { BlogPost } from "@/lib/types";
 export const sofaSizeGuide: BlogPost = {
   slug: "sofa-size-guide-for-your-living-room",
   title: "Sofa size guide: working out what actually fits your living room",
-  seoTitle: "Sofa Size Guide: What Fits Your Living Room",
+  seoTitle: "Sofa Size Guide for Your Living Room",
   description:
     "Sofa dimensions explained: standard two, three and four-seater sizes, how to size an L-shape, walkway clearances and the measurements to take first.",
   excerpt:

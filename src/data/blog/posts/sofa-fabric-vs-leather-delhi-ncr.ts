@@ -9,7 +9,7 @@ import type { BlogPost } from "@/lib/types";
 export const sofaFabricVsLeatherDelhiNcr: BlogPost = {
   slug: "sofa-fabric-vs-leather-delhi-ncr-climate",
   title: "Fabric or leather? Choosing sofa upholstery for Delhi NCR's climate",
-  seoTitle: "Fabric vs Leather Sofa for Delhi NCR Homes",
+  seoTitle: "Fabric vs Leather Sofas in Delhi NCR",
   description:
     "Dust, 45 degree summers and monsoon humidity all punish upholstery differently. How fabric, leather and blends actually perform in Delhi NCR homes.",
   excerpt:

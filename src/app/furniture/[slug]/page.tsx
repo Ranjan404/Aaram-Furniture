@@ -48,9 +48,14 @@ export async function generateMetadata({
     });
   }
 
+  /* Google shows ~155 characters of a description. The local phrase always
+     fits; the call to action is added only when there is room for it. */
+  const local = `${product.description} Made to order in ${siteConfig.serviceArea}.`;
+  const withCta = `${local} Call or WhatsApp for sizes.`;
+
   return buildMetadata({
     title: `${product.name} - ${product.category}`,
-    description: `${product.description} Made to order in your size and finish. Call ${siteConfig.phone.display} or message us on WhatsApp for details.`,
+    description: withCta.length <= 158 ? withCta : local,
     path: `/furniture/${product.slug}`,
     image: product.shareImage ?? product.image,
   });

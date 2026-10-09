@@ -4,7 +4,7 @@ import type { BlogPost } from "@/lib/types";
 export const howToChooseABed: BlogPost = {
   slug: "how-to-choose-a-bed",
   title: "How to choose a bed: sizes, storage and what a good frame is made of",
-  seoTitle: "How to Choose a Bed: Sizes, Storage & Frames",
+  seoTitle: "How to Choose a Bed: Sizes & Storage",
   description:
     "Indian bed sizes explained, storage versus platform beds, hydraulic and drawer mechanisms, headboard heights and how to plan a bedroom around the bed.",
   excerpt:

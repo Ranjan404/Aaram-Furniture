@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 import { moreFurniture, sofas, beds } from "@/data/products";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
 import { breadcrumbJsonLd, buildMetadata, productListJsonLd } from "@/lib/seo";
@@ -15,11 +16,10 @@ import { CatalogueCTA } from "@/components/sections/CatalogueCTA";
 import { LeadCTA } from "@/components/sections/LeadCTA";
 import { GuidesTeaser } from "@/components/sections/GuidesTeaser";
 
-const description =
-  "Every furniture category we make: sofas, beds, dining tables and sets, centre and side tables, TV units, wardrobes, chairs, recliners and fully custom pieces built to your measurements.";
+const description = `Furniture made to order in ${siteConfig.serviceArea}: sofas, beds, dining sets, centre tables, TV units, wardrobes, chairs and custom pieces built to your measurements.`;
 
 export const metadata: Metadata = buildMetadata({
-  title: "All Furniture - Sofas, Beds, Dining, Storage & Custom",
+  title: `All Furniture Designs, ${siteConfig.serviceArea}`,
   description,
   path: "/furniture",
   image: shareCard("furniture"),

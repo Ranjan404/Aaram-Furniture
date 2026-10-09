@@ -14,10 +14,10 @@ import { CatalogueCTA } from "@/components/sections/CatalogueCTA";
 import { LeadCTA } from "@/components/sections/LeadCTA";
 
 const description =
-  "A visual collection of our furniture in real rooms: sofas, beds, dining spaces and craftsmanship details, to help you picture the pieces in your own home.";
+  "Our furniture in real rooms: sofas, beds, dining spaces and craftsmanship details, to help you picture each piece in your own home before you order.";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Collection - Furniture Gallery & Room Inspiration",
+  title: "Furniture Gallery & Room Inspiration",
   description,
   path: "/collection",
   image: shareCard("collection"),
