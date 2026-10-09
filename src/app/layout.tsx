@@ -120,19 +120,26 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Footer />
         <FloatingContact />
       </body>
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-Z54Q9G54K7"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-Z54Q9G54K7');
-        `}
-      </Script>
+      {/* `lazyOnload`: GA is the heaviest script on the page (~176 KiB, ~230 ms
+          of mobile main-thread work). Loading it at idle keeps it out of the
+          LCP race and off Total Blocking Time; a lead-gen site loses almost
+          no data by waiting. */}
+      {siteConfig.googleAnalyticsId ? (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAnalyticsId}`}
+            strategy="lazyOnload"
+          />
+          <Script id="google-analytics" strategy="lazyOnload">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${siteConfig.googleAnalyticsId}');
+            `}
+          </Script>
+        </>
+      ) : null}
     </html>
   );
 }

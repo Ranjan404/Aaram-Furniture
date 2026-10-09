@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 import { beds } from "@/data/products";
 import { galleryItems } from "@/data/gallery";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
@@ -15,11 +16,12 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { LeadCTA } from "@/components/sections/LeadCTA";
 import { GuidesTeaser } from "@/components/sections/GuidesTeaser";
 
-const description =
-  "Modern bed designs made to order: upholstered beds, hydraulic storage beds and solid wood platform beds in king, queen and custom sizes. Call or WhatsApp for designs and a quote.";
+/* Title and description both name the market (owner-confirmed) and stay
+   inside what Google shows: ~60 characters with the brand, ~155 here. */
+const description = `Beds made to order in ${siteConfig.serviceArea}: upholstered, hydraulic storage and solid wood platform beds in king, queen or custom sizes. Call or WhatsApp for a quote.`;
 
 export const metadata: Metadata = buildMetadata({
-  title: "Bed Designs - Upholstered, Storage & Platform Beds",
+  title: `Bed Designs Made to Order in ${siteConfig.serviceArea}`,
   description,
   path: "/beds",
   image: shareCard("beds"),

@@ -28,6 +28,11 @@ import { siteConfig } from "@/config/site";
 export interface ServiceArea {
   /** Must match an entry in `siteConfig.serviceAreas`. */
   name: string;
+  /**
+   * The other name people search the place by, when it has one. Shown beside
+   * the name and emitted as `alternateName` in `areaServed`.
+   */
+  alias?: string;
   /** One line on what furnishing a home there actually involves. */
   note: string;
   /** An article really written about this place, when one exists. */
@@ -57,6 +62,7 @@ export const serviceAreas: ServiceArea[] = [
   },
   {
     name: "Gurugram",
+    alias: "Gurgaon",
     note: "Condominium apartments with large rooms and high ceilings, where standard sizes read as under-scaled.",
     guide: {
       slug: "furnishing-a-gurgaon-apartment",

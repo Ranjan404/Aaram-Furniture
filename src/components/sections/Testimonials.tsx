@@ -24,8 +24,10 @@ function Stars({ rating, tone }: { rating: number; tone: "dark" | "light" }) {
         "flex items-center gap-1",
         tone === "light" ? "text-brass-soft" : "text-brass",
       )}
-      aria-label={`Rated ${rating} out of 5`}
     >
+      {/* Visually hidden text, not `aria-label`: a label is prohibited on a
+          plain <p>, so screen readers were free to ignore it. */}
+      <span className="sr-only">Rated {rating} out of 5</span>
       {Array.from({ length: 5 }, (_, index) => (
         <StarIcon
           key={index}

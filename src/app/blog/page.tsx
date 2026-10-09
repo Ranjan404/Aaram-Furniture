@@ -23,7 +23,7 @@ const description =
   "Practical guides to buying furniture: sizing a sofa to your room, choosing a bed, upholstery for Delhi NCR's climate, and looking after what you buy.";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Furniture Guides - Buying, Sizing & Care Advice",
+  title: "Furniture Guides: Buying, Sizing & Care",
   description,
   path: "/blog",
   image: shareCard("blog"),

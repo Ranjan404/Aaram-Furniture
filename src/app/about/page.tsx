@@ -16,7 +16,7 @@ import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { LeadCTA } from "@/components/sections/LeadCTA";
 import { galleryItems } from "@/data/gallery";
 
-const description = `${siteConfig.name} makes sofas, beds and custom furniture to order for homes across ${siteConfig.serviceArea}. How we approach design, comfort, materials and customisation, and how to talk to us before you buy.`;
+const description = `${siteConfig.name} makes sofas, beds and custom furniture to order for homes across ${siteConfig.serviceArea}: how we approach design, comfort and materials.`;
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us - How We Make Furniture",

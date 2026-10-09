@@ -8,9 +8,9 @@ import type { BlogPost } from "@/lib/types";
 export const furnishingAGurgaonApartment: BlogPost = {
   slug: "furnishing-a-gurgaon-apartment",
   title: "Furnishing a Gurgaon apartment: what to plan before anything is ordered",
-  seoTitle: "How to Furnish a Gurgaon Apartment: Planning Guide",
+  seoTitle: "How to Furnish a Gurgaon Apartment",
   description:
-    "A planning guide for furnishing a new Gurgaon high-rise flat: what to buy in what order, zoning an open-plan living and dining space, glare, and delivery access.",
+    "Furnishing a new Gurgaon high-rise flat: what to buy in what order, zoning an open-plan living and dining space, glare, and delivery access.",
   excerpt:
     "A new high-rise flat is a sequencing problem before it is a shopping problem. What to decide first, how to zone an open plan, and the access to check.",
   category: "delhi-ncr",

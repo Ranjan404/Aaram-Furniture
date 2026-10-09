@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { serviceAreas } from "@/data/service-areas";
 import { faqs } from "@/data/faqs";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd, furnitureStoreJsonLd } from "@/lib/seo";
 import { shareCard } from "@/data/share-cards";
@@ -14,10 +15,13 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { CatalogueCTA } from "@/components/sections/CatalogueCTA";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 
-const description = `Call ${siteConfig.phone.display} or message us on WhatsApp for sofa, bed and custom furniture designs, sizes and quotes. Send your room measurements and we will come back with options.`;
+/* The one commercial page that names the individual towns, taken from the
+   rendered "Where we deliver" list so it can only claim a declared place. */
+const places = serviceAreas.map((area) => area.name);
+const description = `Call ${siteConfig.phone.display} or WhatsApp for sofas, beds and custom furniture in ${places.slice(0, -1).join(", ")} and ${places.at(-1)}. Get a quote.`;
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact - Call or WhatsApp for Furniture Designs",
+  title: `Contact: Furniture Enquiries in ${siteConfig.serviceArea}`,
   description,
   path: "/contact",
   image: shareCard("contact"),

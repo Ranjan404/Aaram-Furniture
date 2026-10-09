@@ -51,7 +51,12 @@ export function ServiceAreas({
           <li key={area.name} className="bg-ivory">
             <Reveal delay={(index % 3) * 70} className="block h-full">
               <div className="flex h-full flex-col bg-ivory p-7 sm:p-8">
-                <h3 className="text-xl">{area.name}</h3>
+                <h3 className="text-xl">
+                  {area.name}
+                  {area.alias ? (
+                    <span className="text-stone"> ({area.alias})</span>
+                  ) : null}
+                </h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-stone">{area.note}</p>
                 {area.guide ? (
                   <Link

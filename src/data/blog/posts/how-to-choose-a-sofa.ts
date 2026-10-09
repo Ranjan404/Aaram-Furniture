@@ -8,7 +8,7 @@ import type { BlogPost } from "@/lib/types";
 export const howToChooseASofa: BlogPost = {
   slug: "how-to-choose-a-sofa",
   title: "How to choose a sofa: a buying guide that starts with your room",
-  seoTitle: "How to Choose a Sofa: Complete Buying Guide",
+  seoTitle: "How to Choose a Sofa: Buying Guide",
   description:
     "A practical sofa buying guide: how to size a sofa to your room, judge the frame, foam and suspension, pick a shape, and choose upholstery that lasts.",
   excerpt:

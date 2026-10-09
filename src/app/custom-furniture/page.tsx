@@ -27,10 +27,10 @@ import { LeadCTA } from "@/components/sections/LeadCTA";
  * own, which meant the site's strongest and most defensible proposition was not
  * the target of any page. This route is that page.
  */
-const description = `Sofas, beds, wardrobes and TV units built to your measurements, in the fabric and finish you choose, across ${siteConfig.serviceArea}. Send your room dimensions for a quote.`;
+const description = `Custom sofas, beds, wardrobes and TV units built to your measurements in ${siteConfig.serviceArea}, in the fabric and finish you choose. Send room sizes for a quote.`;
 
 export const metadata: Metadata = buildMetadata({
-  title: "Custom Furniture Made to Order - Your Size, Your Finish",
+  title: `Custom Furniture Made to Order, ${siteConfig.serviceArea}`,
   description,
   path: "/custom-furniture",
   image: shareCard("custom-furniture"),

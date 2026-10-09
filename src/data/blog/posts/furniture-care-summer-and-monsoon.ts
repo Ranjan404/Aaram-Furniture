@@ -4,7 +4,7 @@ import type { BlogPost } from "@/lib/types";
 export const furnitureCareSummerAndMonsoon: BlogPost = {
   slug: "furniture-care-summer-and-monsoon",
   title: "Furniture care through the summer and the monsoon",
-  seoTitle: "Furniture Care Guide: Summer, Monsoon & Dust",
+  seoTitle: "Furniture Care in Summer, Monsoon & Dust",
   description:
     "How to look after sofas, beds and wooden furniture through heat, dust and monsoon humidity: cleaning upholstery and leather, protecting wood, seasonal checks.",
   excerpt:
