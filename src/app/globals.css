@@ -28,6 +28,16 @@
   --color-whatsapp: #15803c;
   --color-whatsapp-deep: #10662f;
 
+  /* Festive accents (Diwali). Used only by the seasonal layer, which is
+     switched off in src/config/festive.ts, so the base palette is unchanged
+     outside the campaign. Gold and marigold are for decoration and for text on
+     maroon; on light surfaces, text uses maroon (about 9.8:1 on ivory). */
+  --color-gold: #d4a437;
+  --color-gold-soft: #f3d27a;
+  --color-marigold: #e8771e;
+  --color-maroon: #7a1d2b;
+  --color-maroon-deep: #4b0f19;
+
   /* Type */
   --font-display: var(--font-instrument-serif), ui-serif, Georgia, "Times New Roman", serif;
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -64,12 +74,21 @@
   /* The site is intentionally light-only; lock in the form control palette so
      a visitor's OS dark mode cannot invert inputs and selects. */
   color-scheme: light;
-  --header-h: 4.5rem;
+  /* The navigation row. `--header-h` is the whole fixed header, which every
+     page offsets its first section by; it grows by the announcement bar's
+     height only while the festive bar is rendered. */
+  --nav-h: 4.5rem;
+  --bar-h: 0rem;
+  --header-h: calc(var(--nav-h) + var(--bar-h));
+}
+
+:root[data-festive-bar] {
+  --bar-h: 2.25rem;
 }
 
 @media (min-width: 1024px) {
   :root {
-    --header-h: 5.25rem;
+    --nav-h: 5.25rem;
   }
 }
 
@@ -226,6 +245,88 @@ p {
 
 .animate-fade {
   animation: fade 1.2s var(--ease-premium) both;
+}
+
+/* ---------------------------------------------------------------------------
+   Festive decoration (src/components/festive). Every effect animates only
+   `transform` and `opacity`, sits in an absolutely positioned, aria-hidden,
+   pointer-events-none layer, and so can neither shift layout nor intercept a
+   tap. Each element's resting style is its finished look: under reduced motion
+   the rule below cuts the animation and the static decoration remains, except
+   the fireworks, whose resting state is hidden.
+   --------------------------------------------------------------------------- */
+@keyframes flame {
+  0%,
+  100% {
+    transform: scale(1, 1) rotate(-2deg);
+    opacity: 1;
+  }
+  35% {
+    transform: scale(0.92, 1.08) rotate(2deg);
+    opacity: 0.88;
+  }
+  70% {
+    transform: scale(1.05, 0.95) rotate(-1deg);
+    opacity: 0.96;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes burst {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  6% {
+    opacity: 1;
+  }
+  22% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.festive-flame {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: flame 1.6s ease-in-out infinite;
+}
+
+.festive-twinkle {
+  animation: twinkle 2.8s ease-in-out infinite;
+  animation-delay: var(--twinkle-delay, 0s);
+}
+
+.festive-burst {
+  opacity: 0;
+  transform-origin: center;
+  animation: burst 7s var(--ease-premium) infinite;
+  animation-delay: var(--burst-delay, 0s);
+}
+
+.festive-spin {
+  animation: spin-slow 120s linear infinite;
 }
 
 /* ---------------------------------------------------------------------------

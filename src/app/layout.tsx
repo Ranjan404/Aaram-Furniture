@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Instrument_Serif, Manrope } from "next/font/google";
 import { siteConfig } from "@/config/site";
+import { festiveAnnouncement } from "@/config/festive";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingContact } from "@/components/layout/FloatingContact";
@@ -105,6 +106,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en-IN"
       className={`${display.variable} ${sans.variable} h-full`}
+      // Reserves the announcement bar's height in `--header-h` (globals.css).
+      data-festive-bar={festiveAnnouncement ? "" : undefined}
     >
       <body className="flex min-h-full flex-col bg-ivory">
         <a
@@ -113,7 +116,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <Header />
+        <Header announcement={festiveAnnouncement} />
         <main id="main" className="flex-1">
           {children}
         </main>

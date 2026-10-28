@@ -10,13 +10,15 @@ import {
   waMessages,
   whatsappHref,
 } from "@/lib/contact";
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, buildMetadata, canonicalUrl } from "@/lib/seo";
+import { productOfferJsonLd } from "@/lib/pricing";
 import { JsonLd } from "@/components/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { SmartImage } from "@/components/ui/SmartImage";
+import { PriceTag } from "@/components/ui/PriceTag";
 import { DownloadIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { ProductCard } from "@/components/sections/ProductCard";
 import { LeadCTA } from "@/components/sections/LeadCTA";
@@ -103,8 +105,9 @@ export default async function ProductPage({ params }: PageProps<"/furniture/[slu
           category: product.category,
           image: new URL(product.image.src, siteConfig.url).toString(),
           brand: { "@type": "Brand", name: siteConfig.name },
-          // No `offers` block: pricing is quoted per piece, so publishing a
-          // price here would be inaccurate.
+          // `offers` only once a real price is entered on the product; the
+          // sample catalogue has none, so nothing is published.
+          ...productOfferJsonLd(product, canonicalUrl(`/furniture/${product.slug}`)),
         }}
       />
 
@@ -152,7 +155,7 @@ export default async function ProductPage({ params }: PageProps<"/furniture/[slu
               <p className="mt-6 leading-relaxed text-stone">{product.description}</p>
 
               {product.price ? (
-                <p className="mt-6 font-display text-3xl text-ink">{product.price}</p>
+                <PriceTag product={product} size="lg" />
               ) : (
                 <p className="mt-6 text-sm text-stone">
                   Priced per piece, based on the size and materials you choose. Message us for a

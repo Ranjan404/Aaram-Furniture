@@ -9,6 +9,7 @@ import { furnishingAGurgaonApartment } from "./posts/furnishing-a-gurgaon-apartm
 import { furnishingABuilderFloorInGhaziabad } from "./posts/furnishing-a-builder-floor-in-ghaziabad";
 import { furnitureCareSummerAndMonsoon } from "./posts/furniture-care-summer-and-monsoon";
 import { madeToMeasureVsReadyMade } from "./posts/made-to-measure-vs-ready-made";
+import { diwaliFurniturePlanningGuide } from "./posts/diwali-furniture-planning-guide";
 
 export { blogCategories, blogCategory };
 
@@ -36,6 +37,7 @@ const registry: BlogPost[] = [
   furnishingABuilderFloorInGhaziabad,
   furnitureCareSummerAndMonsoon,
   madeToMeasureVsReadyMade,
+  diwaliFurniturePlanningGuide,
 ];
 
 /** `/blog/category` is a real route, so it can never also be an article slug. */

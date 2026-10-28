@@ -21,6 +21,17 @@ const nextConfig: NextConfig = {
     // per-image quality real again, list the values here first.
   },
 
+  /**
+   * The moment of the build, inlined into server and client bundles alike.
+   * `src/config/festive.ts` decides whether the seasonal layer is showing from
+   * this rather than from the visitor's clock, so a client component (the
+   * filterable product grid renders `ProductCard` in the browser) can never
+   * disagree with the prerendered HTML and cause a hydration mismatch.
+   */
+  env: {
+    BUILD_TIME: String(Date.now()),
+  },
+
   // Trailing-slash-free, lowercase URLs keep canonical tags unambiguous.
   trailingSlash: false,
 

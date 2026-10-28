@@ -9,6 +9,8 @@ import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Wordmark } from "./Wordmark";
+import { AnnouncementBar } from "@/components/festive/AnnouncementBar";
+import type { FestiveAnnouncement } from "@/config/festive";
 import {
   CloseIcon,
   DownloadIcon,
@@ -30,7 +32,12 @@ const navLinks = [
 
 const mobileLinks = [{ href: "/", label: "Home" }, ...navLinks];
 
-export function Header() {
+export function Header({
+  announcement = null,
+}: {
+  /** Festive strip above the navigation, resolved by the layout at build time. */
+  announcement?: FestiveAnnouncement | null;
+}) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -92,8 +99,9 @@ export function Header() {
         scrolled && !open && "shadow-[0_1px_24px_-12px_rgba(23,20,15,0.25)]",
       )}
     >
+      {announcement ? <AnnouncementBar announcement={announcement} /> : null}
       <Container size="wide">
-        <div className="flex h-[var(--header-h)] items-center justify-between gap-4">
+        <div className="flex h-[var(--nav-h)] items-center justify-between gap-4">
           <Wordmark tone={solid ? "dark" : "light"} />
 
           <nav aria-label="Primary" className="hidden lg:block">

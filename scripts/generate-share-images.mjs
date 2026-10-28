@@ -89,6 +89,7 @@ const pageSources = {
   contact: "/images/gallery/lounge-seating-in-brick-walled-space.jpg",
   about: "/images/about/contemporary-furniture-showroom-lounge.jpg",
   "custom-furniture": "/images/about/furniture-workshop-craftsmanship.jpg",
+  "diwali-furniture": "/images/gallery/maroon-channel-tufted-sofa-and-loveseat.jpg",
 };
 
 const jobs = [

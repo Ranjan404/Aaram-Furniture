@@ -111,10 +111,13 @@ export const siteConfig = {
   serviceAreas: [
     "Delhi",
     "New Delhi",
+    // Okhla and Khoda confirmed by the owner (October 2026).
+    "Okhla",
     "Gurugram",
     "Noida",
     "Greater Noida",
     "Ghaziabad",
+    "Khoda",
     "Faridabad",
   ] as string[] | null,
 

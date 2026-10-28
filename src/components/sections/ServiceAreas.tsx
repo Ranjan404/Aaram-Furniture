@@ -46,10 +46,10 @@ export function ServiceAreas({
         }
       />
 
-      <ul className="mt-12 grid gap-px overflow-hidden rounded-(--radius-card) border border-line bg-line sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+      <ul className="mt-12 grid gap-px overflow-hidden rounded-(--radius-card) border border-line bg-line sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
         {serviceAreas.map((area, index) => (
           <li key={area.name} className="bg-ivory">
-            <Reveal delay={(index % 3) * 70} className="block h-full">
+            <Reveal delay={(index % 4) * 70} className="block h-full">
               <div className="flex h-full flex-col bg-ivory p-7 sm:p-8">
                 <h3 className="text-xl">
                   {area.name}

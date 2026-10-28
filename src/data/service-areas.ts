@@ -20,6 +20,7 @@ import { siteConfig } from "@/config/site";
  *
  * Nothing here states a delivery charge, a delivery time or a minimum order,
  * because none has been supplied.
+ * Okhla and Khoda were added at the owner's request (October 2026).
  * TODO(owner): confirm this is where you genuinely deliver and install, and in
  * particular whether Faridabad belongs on the list. Every line is a claim.
  * ---------------------------------------------------------------------------
@@ -76,6 +77,15 @@ export const serviceAreas: ServiceArea[] = [
       slug: "sofa-fabric-vs-leather-delhi-ncr-climate",
       label: "Fabric or leather in the Delhi NCR climate",
     },
+  },
+  {
+    name: "Okhla",
+    note: "Walk-up buildings off narrow lanes, where the stair turn and the lane width decide what can be carried in.",
+  },
+  {
+    name: "Khoda",
+    alias: "Khora",
+    note: "Dense, multi-storey homes on the Noida border, often with stairs rather than a lift, so pieces are planned to come in sections.",
   },
   {
     name: "Faridabad",
