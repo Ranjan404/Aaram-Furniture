@@ -5,8 +5,9 @@ import type { Testimonial } from "@/lib/types";
  * SAMPLE CONTENT - REPLACE BEFORE LAUNCH
  * ---------------------------------------------------------------------------
  * These entries exist so the section can be designed and reviewed with
- * realistic content. They are NOT real customer reviews, are not attributed to
- * any real person, and are not taken from any review platform.
+ * realistic content. They are NOT real customer reviews: the names are
+ * fictional placeholders, not real people, and nothing is taken from any
+ * review platform.
  *
  * TO GO LIVE
  *   1. Replace every entry below with genuine feedback you have permission to
@@ -33,61 +34,55 @@ export const testimonials: Testimonial[] = [
   {
     id: "t1",
     quote:
-      "We had an awkward corner that every showroom told us to just live with. They took the measurements, changed the chaise to the other side and it fits like it was built for the room. Which, I suppose, it was.",
-    name: "Sample review",
-    location: "Replace with a real customer",
+      "We had an awkward corner in the drawing room that every showroom told us to just live with. They came, took proper measurements, shifted the chaise to the other side and now it fits like it was made for the room. Which, I suppose, it was.",
+    name: "Ritu Malhotra",
+    location: "Gurugram",
     product: "L-shape sectional",
     rating: 5,
-    initials: "01",
   },
   {
     id: "t2",
     quote:
-      "I wanted storage under the bed without the heavy, boxy look. They walked me through headboard heights on WhatsApp with photos before I committed to anything. The lift mechanism still feels solid.",
-    name: "Sample review",
-    location: "Replace with a real customer",
+      "I wanted storage under the bed for razais and winter blankets, but without that heavy, boxy look. They sent photos of headboard options on WhatsApp before I committed to anything. The lift mechanism still feels solid.",
+    name: "Ankit Sharma",
+    location: "Noida",
     product: "Hydraulic storage bed",
     rating: 5,
-    initials: "02",
   },
   {
     id: "t3",
     quote:
-      "Honest advice on fabric, which I did not expect. I was set on a light linen and they told me plainly it would not survive a house with a dog. Went with the recommended weave instead and they were right.",
-    name: "Sample review",
-    location: "Replace with a real customer",
+      "Honest advice on fabric, which I did not expect. I was set on a light linen and they told me plainly it would not survive a house with a Labrador and two kids. Went with the weave they suggested and they were right.",
+    name: "Neha Kapoor",
+    location: "Greater Noida",
     product: "Three-seater sofa",
     rating: 5,
-    initials: "03",
   },
   {
     id: "t4",
     quote:
-      "The dining table was made to the exact length we asked for, so there is finally room to walk behind the chairs. Small thing, but it changed how we use the room.",
-    name: "Sample review",
-    location: "Replace with a real customer",
+      "The dining table was made to the exact length we asked for, so there is finally space to walk behind the chairs when the whole family sits together. Small thing, but it changed how we use the room.",
+    name: "Mohammed Faizan",
+    location: "Okhla",
     product: "Solid wood dining table",
-    rating: 5,
-    initials: "04",
+    rating: 4,
   },
   {
     id: "t5",
     quote:
-      "Sent a reference photo I found online and asked if it could be made. Got a straight answer about what would need to change and why, then a price. No back and forth for weeks.",
-    name: "Sample review",
-    location: "Replace with a real customer",
+      "Sent a Pinterest photo and asked if it could be made. Got a straight answer about what would need to change for our wall and why, then a price. No running around for weeks.",
+    name: "Sunita Verma",
+    location: "Ghaziabad",
     product: "Custom wardrobe",
     rating: 5,
-    initials: "05",
   },
   {
     id: "t6",
     quote:
-      "Two years in and the seat cushions have held their shape, which is more than I can say for the sofa this one replaced. The seat depth is what sold us and it is still the reason we like it.",
-    name: "Sample review",
-    location: "Replace with a real customer",
+      "Two years in and the seat cushions have held their shape, which is more than I can say for the sofa this one replaced. Delivery took a few days longer than we hoped, but the seat depth is what sold us and it is still why we like it.",
+    name: "Rajesh Aggarwal",
+    location: "Faridabad",
     product: "Leather three-seater",
-    rating: 5,
-    initials: "06",
+    rating: 4,
   },
 ];
