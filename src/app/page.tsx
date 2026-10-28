@@ -21,6 +21,7 @@ import { GuidesTeaser } from "@/components/sections/GuidesTeaser";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { DiwaliCollection } from "@/components/festive/DiwaliCollection";
 
 /* Names the differentiator and the market rather than only the brand. The
    individual cities are targeted in the body copy and in the "Where we deliver"
@@ -46,6 +47,10 @@ export default function HomePage() {
       <JsonLd data={faqJsonLd(homeFaqs)} />
 
       <Hero />
+
+      {/* Seasonal: renders only while the campaign in src/config/festive.ts is
+          active, and leaves the evergreen order below untouched. */}
+      <DiwaliCollection />
 
       {/* Section order is the business hierarchy, deliberately: sofas, then
           beds, then the split feature that states both at once, and only after

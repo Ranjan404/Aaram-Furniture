@@ -19,6 +19,7 @@ const explore = [
   { href: "/beds", label: "Beds" },
   { href: "/custom-furniture", label: "Custom furniture" },
   { href: "/furniture", label: "All furniture" },
+  { href: "/diwali-furniture", label: "Diwali furniture" },
   { href: "/collection", label: "Collection" },
   { href: "/blog", label: "Furniture guides" },
   { href: "/about", label: "About us" },

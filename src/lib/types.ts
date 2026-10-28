@@ -59,10 +59,20 @@ export interface Product {
    */
   tags: string[];
   /**
-   * Optional, only rendered when present. Deliberately left undefined for the
-   * sample catalogue: no prices are invented anywhere in this project.
+   * Price in rupees for the design as listed (its standard size and
+   * upholstery), as a whole number, e.g. 48500. Optional, only rendered when
+   * present, and it is what the `Product` structured data publishes as its
+   * `Offer`. Deliberately left undefined for the sample catalogue: no prices
+   * are invented anywhere in this project.
    */
-  price?: string;
+  price?: number;
+  /**
+   * Festive price in rupees, lower than `price`. Shown (with `price` struck
+   * through) only while a festive offer in `src/config/festive.ts` is running,
+   * and published with that offer's end date as `priceValidUntil`. Ignored
+   * without a `price`.
+   */
+  festivePrice?: number;
   /** Small badge, e.g. "Made to order". */
   badge?: string;
   featured?: boolean;

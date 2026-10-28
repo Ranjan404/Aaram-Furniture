@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { festiveActive, festiveConfig } from "@/config/festive";
 import { heroTrustPoints } from "@/data/features";
 import { beds, sofas } from "@/data/products";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
@@ -9,6 +10,7 @@ import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ArrowRightIcon, ArrowUpRightIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/Icons";
+import { Diya, HeroDecor } from "@/components/festive/Decor";
 
 /** The two headline categories, surfaced visually inside the hero itself. */
 const heroShortcuts = [
@@ -91,8 +93,15 @@ function ShortcutCard({ shortcut, compact }: { shortcut: HeroShortcut; compact?:
  * the top-left to keep both the navigation and the headline legible without
  * turning the page dark. The photograph is the only preloaded image on the
  * site; everything below the fold lazy-loads.
+ *
+ * While the Diwali campaign is active (`src/config/festive.ts`) the copy and
+ * the first action switch to the festive versions and a decorative layer of
+ * lights, fireworks and sparkles is drawn over the photograph. The photograph,
+ * the layout and the LCP element are the same either way.
  */
 export function Hero() {
+  const festive = festiveActive ? festiveConfig.hero : null;
+
   return (
     <section className="relative isolate flex min-h-[86svh] items-end overflow-hidden bg-ink lg:min-h-[92svh]">
       <Image
@@ -117,38 +126,48 @@ export function Hero() {
         className="absolute inset-x-0 top-0 -z-10 h-44 bg-[linear-gradient(to_bottom,rgba(20,17,13,0.6),transparent)]"
       />
 
-      <Container size="wide" className="pt-32 pb-12 sm:pb-16 lg:pt-40 lg:pb-20">
+      {festive ? <HeroDecor /> : null}
+
+      <Container size="wide" className="pt-[calc(var(--header-h)+3.5rem)] pb-12 sm:pb-16 lg:pt-[calc(var(--header-h)+4.75rem)] lg:pb-20">
         <div className="flex items-end justify-between gap-12">
           <div className="max-w-2xl lg:max-w-[46rem]">
-            <p className="eyebrow animate-fade text-brass-soft">
-              Sofas &middot; Beds &middot; Custom furniture
-            </p>
+            {festive ? (
+              <p className="eyebrow animate-fade flex items-center gap-2.5 text-gold-soft">
+                <Diya className="size-7 shrink-0" />
+                {festive.eyebrow}
+              </p>
+            ) : (
+              <p className="eyebrow animate-fade text-brass-soft">
+                Sofas &middot; Beds &middot; Custom furniture
+              </p>
+            )}
 
             <h1 className="animate-rise mt-5 text-(length:--text-display-lg) text-white [animation-delay:80ms]">
-              Sofas and beds designed to make your space feel like home.
+              {festive?.title ?? "Sofas and beds designed to make your space feel like home."}
             </h1>
 
             {/* The market is named here rather than in the h1: the headline
                 stays human, and "Delhi NCR" still lands in the page's opening
                 copy where it counts. `serviceArea` is owner-confirmed. */}
             <p className="animate-rise mt-5 max-w-lg text-base leading-relaxed text-white/80 [animation-delay:200ms] sm:text-lg">
-              Made to order in the size, fabric and finish you choose, for homes across{" "}
+              {festive?.lead ??
+                "Made to order in the size, fabric and finish you choose, for homes across"}{" "}
               {siteConfig.serviceArea}.
             </p>
 
             <div className="animate-rise mt-8 flex flex-col gap-3 [animation-delay:300ms] sm:flex-row sm:flex-wrap sm:items-center">
               <Button
-                href="/collection"
+                href={festive ? "/diwali-furniture" : "/collection"}
                 variant="light"
                 size="lg"
                 iconAfter={
                   <ArrowRightIcon className="size-[1.15rem] transition-transform duration-300 ease-[var(--ease-premium)] group-hover/btn:translate-x-1" />
                 }
               >
-                Explore the collection
+                {festive ? "Shop the Diwali collection" : "Explore the collection"}
               </Button>
               <Button
-                href={whatsappHref(waMessages.general)}
+                href={whatsappHref(festive ? waMessages.festive : waMessages.general)}
                 variant="whatsapp"
                 size="lg"
                 icon={<WhatsAppIcon className="size-[1.15rem]" />}

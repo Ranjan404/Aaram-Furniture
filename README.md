@@ -44,6 +44,7 @@ leaves it out rather than inventing it. Each item is a one-line change.
 | 14 | Confirm the places in "Where we deliver", Faridabad especially | `src/data/service-areas.ts` (and `serviceAreas` in the config) |
 | 15 | ~~Lead time~~ - set to 4 to 7 days from design confirmation. Split it per category if it really differs by piece | `src/config/site.ts` -> `leadTime` |
 | 16 | Replace the generated share cards with designed ones | `npm run share-images`, then see "The generated share cards" |
+| 17 | **Diwali offer and prices**, if you are running one: offer text, terms and dates, plus real product prices | `src/config/festive.ts` -> `offer`; `price`/`festivePrice` in `src/data/products.ts` |
 
 The phone number `+91 93157 10072` is already wired into every call and
 WhatsApp link on the site. Change it once in `src/config/site.ts` and it updates
@@ -301,6 +302,35 @@ monsoon humidity), so no two of them are the same article with the city name
 swapped.
 
 ---
+
+## Seasonal campaigns (Diwali)
+
+Everything festive is driven by `src/config/festive.ts`:
+
+| Setting | What it does |
+| --- | --- |
+| `enabled` | Master switch for the whole festive layer |
+| `startsOn`, `endsOn` | The window it shows in (inclusive, IST). Judged at **build** time, so redeploy once after `endsOn` (or set `enabled: false`) |
+| `festivalDate`, `year` | Used in the copy and to work out the "confirm by" date from `siteConfig.leadTime` |
+| `hero` | Homepage hero copy while the campaign runs |
+| `offer` | **`null` until a genuine offer exists.** Headline, details, terms and validity dates, all shown to visitors |
+| `collectionIds` | Real product ids for the Diwali collection; an unknown id fails the build |
+
+While active: a maroon announcement bar above the navigation (its height is
+reserved through `--bar-h`, so nothing shifts), a festive hero with CSS/SVG
+lights, sparkles and fireworks, and a Diwali band under the hero. All
+decoration is `aria-hidden`, animates only `transform`/`opacity`, and stops
+under `prefers-reduced-motion`.
+
+`/diwali-furniture` is evergreen and stays indexable all year; update the year
+and dates for the next festival instead of creating a new URL. The homepage
+title deliberately stays evergreen.
+
+**Prices.** `price` and `festivePrice` on a product are whole rupees. A price
+renders, and a `Product` `Offer` (INR, `MadeToOrder`) is emitted, only once
+`price` is set. A festive price shows, struck through against `price` and with
+its end date, and is published with `priceValidUntil`, only while `offer` is
+running. None are set, because no real prices have been supplied.
 
 ## SEO
 

@@ -20,6 +20,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: url("/beds"), changeFrequency: "monthly", priority: 0.9 },
       { url: url("/custom-furniture"), changeFrequency: "monthly", priority: 0.9 },
       { url: url("/furniture"), changeFrequency: "monthly", priority: 0.8 },
+      // Evergreen seasonal page: live all year, refreshed for each festival.
+      { url: url("/diwali-furniture"), changeFrequency: "weekly", priority: 0.8 },
       { url: url("/collection"), changeFrequency: "monthly", priority: 0.7 },
       { url: url("/blog"), changeFrequency: "weekly", priority: 0.8 },
       { url: url("/about"), changeFrequency: "yearly", priority: 0.6 },

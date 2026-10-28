@@ -3,6 +3,7 @@ import type { Product } from "@/lib/types";
 import { waMessages, whatsappHref } from "@/lib/contact";
 import { cn } from "@/lib/cn";
 import { SmartImage } from "@/components/ui/SmartImage";
+import { PriceTag } from "@/components/ui/PriceTag";
 import { ArrowUpRightIcon, WhatsAppIcon } from "@/components/ui/Icons";
 
 /**
@@ -72,9 +73,7 @@ export function ProductCard({
         </ul>
 
         {/* Price only ever renders when a real one has been entered. */}
-        {product.price ? (
-          <p className="mt-4 font-display text-xl text-ink">{product.price}</p>
-        ) : null}
+        <PriceTag product={product} />
 
         {/* mt-auto pins the action row to the card foot so rows line up across a grid. */}
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-line pt-5">

@@ -22,6 +22,7 @@ export const waMessages = {
   catalogue: "Hi, I'd like to receive your furniture catalogue.",
   consultation: "Hi, I'd like to book a design consultation.",
   visit: "Hi, I'd like to visit your showroom. Could you share the details?",
+  festive: "Hi, I'd like to plan a furniture order before Diwali. Could you share the details?",
   product: (name: string) => `Hi, I'm interested in the ${name}. Could you share the details and price?`,
   category: (label: string) => `Hi, I'd like to see your ${label.toLowerCase()} designs.`,
 } as const;

@@ -29,6 +29,7 @@ const cards = {
   about: "Contemporary furniture showroom lounge with sofas and armchairs",
   "custom-furniture":
     "Furniture maker cutting a timber section on a mitre saw in the workshop",
+  "diwali-furniture": "Maroon channel-tufted sofa and loveseat against an exposed brick wall",
 } as const;
 
 export type ShareCardKey = keyof typeof cards;
