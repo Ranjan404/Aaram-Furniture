@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { principalAreasText } from "@/data/service-areas";
 import { beds } from "@/data/products";
 import { galleryItems } from "@/data/gallery";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
@@ -41,7 +42,7 @@ export default function BedsPage() {
       <PageHero
         eyebrow="Beds"
         title="Beds designed for the room they go in."
-        lead="Upholstered headboards, hydraulic storage bases and low platform frames, in king, queen and sizes built to your measurements."
+        lead={`Upholstered headboards, hydraulic storage bases and low platform frames, in king, queen and sizes built to your measurements, for homes in ${principalAreasText}.`}
         breadcrumb={breadcrumb}
         actions={
           <>

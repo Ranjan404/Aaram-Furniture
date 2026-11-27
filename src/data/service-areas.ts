@@ -20,9 +20,11 @@ import { siteConfig } from "@/config/site";
  *
  * Nothing here states a delivery charge, a delivery time or a minimum order,
  * because none has been supplied.
- * Okhla and Khoda were added at the owner's request (October 2026).
- * TODO(owner): confirm this is where you genuinely deliver and install, and in
- * particular whether Faridabad belongs on the list. Every line is a claim.
+ * Okhla and Khoda were added at the owner's request (October 2026). The owner
+ * confirmed Delhi, Noida, Gurugram, Ghaziabad and Faridabad as the core markets
+ * (November 2026); those five are `principalAreas` below.
+ * TODO(owner): keep this to where you genuinely deliver and install. Every
+ * line is a claim.
  * ---------------------------------------------------------------------------
  */
 
@@ -89,7 +91,11 @@ export const serviceAreas: ServiceArea[] = [
   },
   {
     name: "Faridabad",
-    note: "Apartments and independent houses, measured on site the same way as anywhere else.",
+    note: "Plotted independent houses over several floors in the older sectors, and high-rise societies in Greater Faridabad.",
+    guide: {
+      slug: "furnishing-an-independent-house-in-faridabad",
+      label: "Furnishing an independent house in Faridabad",
+    },
   },
 ];
 
@@ -105,3 +111,20 @@ export const serviceAreas: ServiceArea[] = [
     }
   }
 }
+
+/**
+ * The owner-confirmed core markets, in the order they are named in copy. Pages
+ * that name individual cities (page heroes, the footer) use this rather than
+ * typing the list, so it cannot drift from the coverage the site claims.
+ */
+export const principalAreas = ["Delhi", "Noida", "Gurugram", "Ghaziabad", "Faridabad"] as const;
+
+{
+  const rendered = new Set(serviceAreas.map((area) => area.name));
+  for (const name of principalAreas) {
+    if (!rendered.has(name)) throw new Error(`Principal area "${name}" is not in serviceAreas`);
+  }
+}
+
+/** "Delhi, Noida, Gurugram, Ghaziabad and Faridabad" */
+export const principalAreasText = `${principalAreas.slice(0, -1).join(", ")} and ${principalAreas.at(-1)}`;

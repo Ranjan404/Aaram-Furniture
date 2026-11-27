@@ -148,8 +148,8 @@ export function ContactSection({ withForm = true }: { withForm?: boolean }) {
             ) : null}
           </div>
 
-          <Reveal delay={140} className="flex-1">
-            <div className="flex h-full flex-col justify-center gap-4 rounded-(--radius-card) border border-line bg-ivory p-7 sm:flex-row sm:items-center sm:justify-between">
+          <Reveal delay={140}>
+            <div className="flex flex-col gap-4 rounded-(--radius-card) border border-line bg-ivory p-7 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="eyebrow text-stone-light">Product designs</p>
                 <p className="mt-2 text-lg text-ink">Want to see the full range first?</p>

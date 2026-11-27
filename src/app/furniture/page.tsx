@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { principalAreasText } from "@/data/service-areas";
 import { moreFurniture, sofas, beds } from "@/data/products";
 import { telHref, waMessages, whatsappHref } from "@/lib/contact";
 import { breadcrumbJsonLd, buildMetadata, productListJsonLd } from "@/lib/seo";
@@ -87,7 +88,7 @@ export default function FurniturePage() {
       <PageHero
         eyebrow="All furniture"
         title="Everything we make, in one place."
-        lead="Sofas and beds are our focus, but the same workshop and the same standards go into dining, storage, media units and one-off custom pieces."
+        lead={`Sofas and beds are our focus, but the same workshop and the same standards go into dining, storage, media units and one-off custom pieces, made to order in ${principalAreasText}.`}
         breadcrumb={breadcrumb}
         actions={
           <>

@@ -6,7 +6,7 @@ import { LegalPage } from "@/components/sections/LegalPage";
 
 export const metadata: Metadata = buildMetadata({
   title: "Terms of Use",
-  description: `The terms that apply to using the ${siteConfig.name} website.`,
+  description: `The terms for using the ${siteConfig.name} website: how product details, photographs, quoted prices and WhatsApp enquiries should be read.`,
   path: "/terms",
 });
 

@@ -54,13 +54,14 @@ export const siteConfig = {
 
   /**
    * Meta description for the homepage, and the `description` on the
-   * `FurnitureStore` and `WebSite` structured data. It names the market because
-   * `serviceArea` below is owner-confirmed, and it is kept near 155 characters
+   * `FurnitureStore` and `WebSite` structured data. It names the five core
+   * cities (owner-confirmed; see `principalAreas` in
+   * `src/data/service-areas.ts`), and it is kept near 155 characters
    * so Google does not truncate it in a result.
    */
   description:
-    "Premium sofas, beds and custom furniture made to order for homes across " +
-    "Delhi NCR. Browse the designs, then call or WhatsApp for sizes and a quote.",
+    "Sofas, beds and custom furniture made to order in Delhi, Noida, Gurugram, " +
+    "Ghaziabad and Faridabad. Browse the designs, then call or WhatsApp for a quote.",
 
   // -- Contact ---------------------------------------------------------------
   phone: {
