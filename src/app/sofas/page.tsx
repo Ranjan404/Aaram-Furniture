@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { principalAreasText } from "@/data/service-areas";
 import { sofas } from "@/data/products";
 import { galleryItems } from "@/data/gallery";
 import { waMessages, whatsappHref, telHref } from "@/lib/contact";
@@ -43,7 +44,7 @@ export default function SofasPage() {
       <PageHero
         eyebrow="Sofas"
         title="Sofa designs, made to your room."
-        lead="Three-seaters, corner sectionals, modular layouts and compact loveseats. Every design can be built to a different length, depth or fabric, so it fits the room you actually have."
+        lead={`Three-seaters, corner sectionals, modular layouts and compact loveseats, made to order for homes in ${principalAreasText}. Every design can be built to a different length, depth or fabric, so it fits the room you actually have.`}
         breadcrumb={breadcrumb}
         actions={
           <>

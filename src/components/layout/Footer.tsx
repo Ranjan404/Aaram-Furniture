@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { principalAreasText } from "@/data/service-areas";
 import { categories } from "@/data/categories";
 import {
   catalogueHref,
@@ -19,7 +20,6 @@ const explore = [
   { href: "/beds", label: "Beds" },
   { href: "/custom-furniture", label: "Custom furniture" },
   { href: "/furniture", label: "All furniture" },
-  { href: "/diwali-furniture", label: "Diwali furniture" },
   { href: "/collection", label: "Collection" },
   { href: "/blog", label: "Furniture guides" },
   { href: "/about", label: "About us" },
@@ -39,8 +39,8 @@ export function Footer() {
           <div className="lg:col-span-4">
             <Wordmark />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-stone">
-              {siteConfig.tagline}. Sofas, beds, dining and storage furniture, made to order in the
-              size, fabric and finish you choose.
+              {siteConfig.tagline}. Dining, storage and living room pieces too, all made to
+              order in the size, fabric and finish you choose.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a
@@ -165,7 +165,9 @@ export function Footer() {
                 </li>
               ) : null}
               {serviceArea ? (
-                <li className="text-xs text-stone">Serving {serviceArea}</li>
+                <li className="text-xs leading-relaxed text-stone">
+                  Serving {serviceArea}: {principalAreasText}
+                </li>
               ) : null}
             </ul>
 

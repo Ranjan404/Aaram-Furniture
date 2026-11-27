@@ -29,7 +29,7 @@ leaves it out rather than inventing it. Each item is a one-line change.
 | # | What | Where |
 | --- | --- | --- |
 | 1 | Business name and tagline | `src/config/site.ts` -> `name`, `tagline` |
-| 2 | ~~Live domain~~ - set to `https://www.furniturefuture.com`. **Still to do at the host:** 301 non-`www` and `http` to this form | `src/config/site.ts` -> `url` |
+| 2 | ~~Live domain~~ - set to `https://www.furniturefuture.in`. **Still to do at the host:** 301 non-`www` and `http` to this form | `src/config/site.ts` -> `url` |
 | 3 | Showroom address (shows the address block + "Get directions", and adds the address to Google's structured data) | `src/config/site.ts` -> `address` |
 | 4 | Business hours | `src/config/site.ts` -> `openingHours` |
 | 5 | ~~Service area~~ - set to Delhi NCR. Check `serviceAreas` matches where you actually deliver | `src/config/site.ts` -> `serviceArea`, `serviceAreas` |
@@ -41,10 +41,9 @@ leaves it out rather than inventing it. Each item is a one-line change.
 | 11 | Review the FAQ answers you can actually commit to | `src/data/faqs.ts` |
 | 12 | Have the privacy policy and terms reviewed | `src/app/privacy`, `src/app/terms` |
 | 13 | **Blog publication dates** - all nine launch guides carry the launch date | `src/data/blog/index.ts` |
-| 14 | Confirm the places in "Where we deliver", Faridabad especially | `src/data/service-areas.ts` (and `serviceAreas` in the config) |
+| 14 | ~~Core markets~~ - Delhi, Noida, Gurugram, Ghaziabad and Faridabad confirmed (named in the homepage description, category heroes and footer via `principalAreas`). Still confirm Greater Noida, Okhla and Khoda | `src/data/service-areas.ts` (and `serviceAreas` in the config) |
 | 15 | ~~Lead time~~ - set to 4 to 7 days from design confirmation. Split it per category if it really differs by piece | `src/config/site.ts` -> `leadTime` |
 | 16 | Replace the generated share cards with designed ones | `npm run share-images`, then see "The generated share cards" |
-| 17 | **Diwali offer and prices**, if you are running one: offer text, terms and dates, plus real product prices | `src/config/festive.ts` -> `offer`; `price`/`festivePrice` in `src/data/products.ts` |
 
 The phone number `+91 93157 10072` is already wired into every call and
 WhatsApp link on the site. Change it once in `src/config/site.ts` and it updates
@@ -303,34 +302,16 @@ swapped.
 
 ---
 
-## Seasonal campaigns (Diwali)
+## Prices
 
-Everything festive is driven by `src/config/festive.ts`:
+`price` on a product is whole rupees. It renders, and a `Product` `Offer`
+(INR, `MadeToOrder`) is emitted, only once it is set. None are set, because no
+real prices have been supplied.
 
-| Setting | What it does |
-| --- | --- |
-| `enabled` | Master switch for the whole festive layer |
-| `startsOn`, `endsOn` | The window it shows in (inclusive, IST). Judged at **build** time, so redeploy once after `endsOn` (or set `enabled: false`) |
-| `festivalDate`, `year` | Used in the copy and to work out the "confirm by" date from `siteConfig.leadTime` |
-| `hero` | Homepage hero copy while the campaign runs |
-| `offer` | **`null` until a genuine offer exists.** Headline, details, terms and validity dates, all shown to visitors |
-| `collectionIds` | Real product ids for the Diwali collection; an unknown id fails the build |
-
-While active: a maroon announcement bar above the navigation (its height is
-reserved through `--bar-h`, so nothing shifts), a festive hero with CSS/SVG
-lights, sparkles and fireworks, and a Diwali band under the hero. All
-decoration is `aria-hidden`, animates only `transform`/`opacity`, and stops
-under `prefers-reduced-motion`.
-
-`/diwali-furniture` is evergreen and stays indexable all year; update the year
-and dates for the next festival instead of creating a new URL. The homepage
-title deliberately stays evergreen.
-
-**Prices.** `price` and `festivePrice` on a product are whole rupees. A price
-renders, and a `Product` `Offer` (INR, `MadeToOrder`) is emitted, only once
-`price` is set. A festive price shows, struck through against `price` and with
-its end date, and is published with `priceValidUntil`, only while `offer` is
-running. None are set, because no real prices have been supplied.
+The Diwali 2026 campaign has been retired. `/diwali-furniture` and
+`/blog/diwali-furniture-planning-guide` 308-redirect to `/furniture` and
+`/blog` (see `redirects` in `next.config.ts`). If a seasonal campaign runs
+again, build it as a dated, switchable layer and remove it when it ends.
 
 ## SEO
 
@@ -369,14 +350,14 @@ running. None are set, because no real prices have been supplied.
   ones risks a manual penalty as well as being untrue.
 - One `<h1>` per page and a clean heading order throughout.
 
-The domain is set (`https://www.furniturefuture.com`), so canonicals, the
+The domain is set (`https://www.furniturefuture.in`), so canonicals, the
 sitemap and every social URL resolve. Two things still have to happen outside
 this repo, in this order:
 
 1. **Enforce the `www` form and https at the host, as 301s.** A redirect written
    in `next.config.ts` would still let some setups answer the non-canonical host
    with a 200, which is what splits link equity across hostnames. Confirm with
-   `curl -I https://furniturefuture.com` and `curl -I http://www.furniturefuture.com`
+   `curl -I https://furniturefuture.in` and `curl -I http://www.furniturefuture.in`
    that both return 301 and not 200.
 2. **Run each platform's share debugger once, deliberately, at launch** -
    Facebook Sharing Debugger, LinkedIn Post Inspector, and paste the link to

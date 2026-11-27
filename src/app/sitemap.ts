@@ -9,7 +9,10 @@ import { canonicalUrl } from "@/lib/seo";
  * product design. Next serves this at /sitemap.xml.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  /* `lastModified` is set only where a real date exists (the articles). Every
+     other page used to carry the build time, which told crawlers the whole site
+     changed on each deploy; Google stops trusting `lastmod` on sites where it
+     is unreliable, and that would discount the accurate article dates too. */
   // Shared with the canonical tags so both agree on the root URL form.
   const url = canonicalUrl;
 
@@ -20,8 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: url("/beds"), changeFrequency: "monthly", priority: 0.9 },
       { url: url("/custom-furniture"), changeFrequency: "monthly", priority: 0.9 },
       { url: url("/furniture"), changeFrequency: "monthly", priority: 0.8 },
-      // Evergreen seasonal page: live all year, refreshed for each festival.
-      { url: url("/diwali-furniture"), changeFrequency: "weekly", priority: 0.8 },
       { url: url("/collection"), changeFrequency: "monthly", priority: 0.7 },
       { url: url("/blog"), changeFrequency: "weekly", priority: 0.8 },
       { url: url("/about"), changeFrequency: "yearly", priority: 0.6 },
@@ -29,18 +30,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: url("/privacy"), changeFrequency: "yearly", priority: 0.2 },
       { url: url("/terms"), changeFrequency: "yearly", priority: 0.2 },
     ] satisfies MetadataRoute.Sitemap
-  ).map((entry) => ({ ...entry, lastModified }));
+  );
 
   const productRoutes: MetadataRoute.Sitemap = allProducts.map((product) => ({
     url: url(`/furniture/${product.slug}`),
-    lastModified,
     changeFrequency: "monthly",
     priority: 0.6,
   }));
 
   const blogCategoryRoutes: MetadataRoute.Sitemap = blogCategories.map((category) => ({
     url: url(`/blog/category/${category.slug}`),
-    lastModified,
     changeFrequency: "weekly",
     priority: 0.5,
   }));

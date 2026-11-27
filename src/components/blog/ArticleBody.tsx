@@ -107,7 +107,7 @@ function Block({ block, headingId }: { block: ArticleBlock; headingId?: string }
         <figure className="mt-9">
           {/* Wide tables scroll inside their own box so the page body never
               scrolls sideways on a phone. */}
-          <div className="overflow-x-auto rounded-(--radius-card) border border-line">
+          <div className="relative overflow-x-auto rounded-(--radius-card) border border-line">
             <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
               <caption className="sr-only">{block.caption}</caption>
               <thead>

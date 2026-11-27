@@ -160,10 +160,13 @@ export function Testimonials({ tone = "ivory" }: { tone?: "ivory" | "cream" }) {
       />
 
       {/* Phones: a snap rail so six quotes cost one screen instead of six.
-          sm and up: a normal grid. */}
+          sm and up: a normal grid. `relative` makes the rail the containing
+          block for the cards' `sr-only` text: without it (reduced motion or no
+          JS, so no Reveal transform) that absolutely positioned text escapes
+          the rail's overflow clip and scrolls the whole page sideways. */}
       <ul
         className={cn(
-          "no-scrollbar mt-12 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 lg:mt-14",
+          "no-scrollbar relative mt-12 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 lg:mt-14",
           "sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3",
         )}
       >

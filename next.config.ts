@@ -21,21 +21,22 @@ const nextConfig: NextConfig = {
     // per-image quality real again, list the values here first.
   },
 
-  /**
-   * The moment of the build, inlined into server and client bundles alike.
-   * `src/config/festive.ts` decides whether the seasonal layer is showing from
-   * this rather than from the visitor's clock, so a client component (the
-   * filterable product grid renders `ProductCard` in the browser) can never
-   * disagree with the prerendered HTML and cause a hydration mismatch.
-   */
-  env: {
-    BUILD_TIME: String(Date.now()),
-  },
-
   // Trailing-slash-free, lowercase URLs keep canonical tags unambiguous.
   trailingSlash: false,
 
   poweredByHeader: false,
+
+  /**
+   * Retired URLs. Both were live and in the sitemap during the Diwali 2026
+   * campaign, so they may be indexed or shared; a permanent redirect to the
+   * closest evergreen page passes that on instead of serving a 404.
+   */
+  async redirects() {
+    return [
+      { source: "/diwali-furniture", destination: "/furniture", permanent: true },
+      { source: "/blog/diwali-furniture-planning-guide", destination: "/blog", permanent: true },
+    ];
+  },
 
   /**
    * Baseline security headers.

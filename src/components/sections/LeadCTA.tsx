@@ -15,10 +15,18 @@ import { DownloadIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/Icons";
 /**
  * Primary conversion band. Repeats the three actions that matter - message,
  * call, get the designs - at the point where a visitor has seen enough.
+ *
+ * It normally borrows its top spacing from the ivory section above it. After a
+ * cream or ink band there is nothing to borrow, and the card would sit flush
+ * against the colour change, so the sibling variants add the standard section
+ * rhythm in exactly that case.
  */
 export function LeadCTA() {
   return (
-    <section aria-labelledby="lead-title" className="bg-ivory pb-16 sm:pb-20 lg:pb-28">
+    <section
+      aria-labelledby="lead-title"
+      className="bg-ivory pb-16 sm:pb-20 lg:pb-28 [.bg-cream+&]:pt-14 [.bg-ink+&]:pt-14 sm:[.bg-cream+&]:pt-18 sm:[.bg-ink+&]:pt-18 lg:[.bg-cream+&]:pt-26 lg:[.bg-ink+&]:pt-26"
+    >
       <Container size="wide">
         <Reveal>
           <div className="surface-wash relative overflow-hidden rounded-[2rem] border border-line px-6 py-14 text-center sm:px-12 sm:py-16 lg:py-20">
